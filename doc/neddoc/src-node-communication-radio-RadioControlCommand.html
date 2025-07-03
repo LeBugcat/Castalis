@@ -1,0 +1,54 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Message <i>RadioControlCommand</i></h2>
+<b>File: <a href="src-node-communication-radio-RadioControlMessage.msg.html">src/node/communication/radio/RadioControlMessage.msg</a></b><br/><p>(no description)</p><h3 class="subtitle">Fields:</h3>
+<table class="fieldstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>radioControlCommandKind</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="local">
+   <td>state</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>to be used with SET_STATE</p>
+</td>
+</tr>
+<tr class="local">
+   <td>parameter</td>
+   <td>
+      <i>
+double</i>
+   </td>
+   <td>
+<p>to be used with SET_TX_OUTPUT, SET_CARRIER_FREQ, SET_CCA_THRESHOLD</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">message</span><span style="color: #000000; "> </span><span style="color: #000000; ">RadioControlCommand</span><span style="color: #000000; ">
+{
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">radioControlCommandKind</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@enum</span><span style="color: #000000; ">(</span><span style="color: #000000; ">RadioControlCommand_type</span><span style="color: #000000; ">);
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">state</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@enum</span><span style="color: #000000; ">(</span><span style="color: #000000; ">BasicState_type</span><span style="color: #000000; ">) = </span><span style="color: #000000; ">RX</span><span style="color: #000000; ">;	</span><span style="color: #808080; font-style: italic; ">//to be used with SET_STATE
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">parameter</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">.</span><span style="color: #008000; ">0</span><span style="color: #000000; ">;	</span><span style="color: #808080; font-style: italic; ">//to be used with SET_TX_OUTPUT, SET_CARRIER_FREQ, SET_CCA_THRESHOLD
+</span><span style="color: #000000; ">}
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

@@ -1,0 +1,68 @@
+!SESSION 2023-06-10 15:34:25.846 -----------------------------------------------
+eclipse.buildId=5.6.2.200518-aa79d0918f
+java.version=17.0.6
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/lebugcat/programs/omnetpp-5.6.2/projects/Castalia-remake/Castalia-topic-omnetpp54-compatibility -os linux -ws gtk -arch x86_64
+
+!ENTRY org.omnetpp.main 1 0 2023-06-10 15:34:28.619
+!MESSAGE OMNeT++ IDE 5.6.2.200518-aa79d0918f started.
+
+!ENTRY org.eclipse.core.resources 4 374 2023-06-10 15:34:47.067
+!MESSAGE Resource '/inet' already exists.
+!STACK 0
+java.lang.Exception: Resource '/inet' already exists.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.resources.Resource.checkDoesNotExist(Resource.java:309)
+	at org.eclipse.core.internal.resources.Resource.checkDoesNotExist(Resource.java:296)
+	at org.eclipse.core.internal.resources.Project.assertCreateRequirements(Project.java:56)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:266)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:252)
+	at org.omnetpp.ide.installer.AbstractProjectInstaller.importProjectIntoWorkspace(AbstractProjectInstaller.java:159)
+	at org.omnetpp.ide.installer.DefaultProjectInstaller.run(DefaultProjectInstaller.java:32)
+	at org.omnetpp.ide.installer.InstallProjectTask.run(InstallProjectTask.java:53)
+	at org.omnetpp.ide.installer.InstallProjectJob.run(InstallProjectJob.java:32)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SESSION 2023-06-10 15:37:55.346 -----------------------------------------------
+eclipse.buildId=5.6.2.200518-aa79d0918f
+java.version=17.0.6
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/lebugcat/programs/omnetpp-5.6.2/projects/Castalia-remake/Castalia-topic-omnetpp54-compatibility -os linux -ws gtk -arch x86_64
+
+!ENTRY org.omnetpp.main 1 0 2023-06-10 15:37:59.672
+!MESSAGE OMNeT++ IDE 5.6.2.200518-aa79d0918f started.
+
+!ENTRY org.omnetpp.main 1 0 2023-06-10 15:38:58.501
+!MESSAGE Project inet opened correctly after 1 close/reopen cycle(s).
+
+!ENTRY org.eclipse.core.jobs 4 2 2023-06-10 15:40:06.453
+!MESSAGE An internal error occurred during: "C/C++ Indexer".
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.osgi.util.tracker.ServiceTracker.getService()" because "this.extendedLogTracker" is null
+	at org.eclipse.core.internal.runtime.InternalPlatform.getLog(InternalPlatform.java:361)
+	at org.eclipse.core.runtime.Plugin.getLog(Plugin.java:237)
+	at org.eclipse.cdt.core.CCorePlugin.log(CCorePlugin.java:1612)
+	at org.eclipse.cdt.core.CCorePlugin.log(CCorePlugin.java:1591)
+	at org.eclipse.cdt.core.CCorePlugin.log(CCorePlugin.java:1578)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:175)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SESSION 2023-06-10 15:40:06.781 -----------------------------------------------
+eclipse.buildId=5.6.2.200518-aa79d0918f
+java.version=17.0.6
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data file:/home/lebugcat/programs/omnetpp-5.6.2/projects/Castalia-remake/Castalia-topic-omnetpp54-compatibility/ -os linux -ws gtk -arch x86_64
+
+!ENTRY org.omnetpp.main 1 0 2023-06-10 15:40:10.268
+!MESSAGE OMNeT++ IDE 5.6.2.200518-aa79d0918f started.
+!SESSION 2024-05-08 16:10:46.141 -----------------------------------------------
+eclipse.buildId=5.6.2.200518-aa79d0918f
+java.version=17.0.6
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.omnetpp.main 1 0 2024-05-08 16:11:44.398
+!MESSAGE OMNeT++ IDE 5.6.2.200518-aa79d0918f started.

@@ -1,0 +1,115 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Packet <i>MultipathRingsRoutingPacket</i></h2>
+<b>File: <a href="src-node-communication-routing-multipathRingsRouting-MultipathRingsRoutingPacket.msg.html">src/node/communication/routing/multipathRingsRouting/MultipathRingsRoutingPacket.msg</a></b><br/><p>(no description)</p><h3 class="subtitle">Extends:</h3>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="src-node-communication-routing-RoutingPacket.html">RoutingPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Fields:</h3>
+<table class="fieldstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>multipathRingsRoutingPacketKind</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+</td>
+</tr>
+<tr class="local">
+   <td>sinkID</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>2 bytes</p>
+</td>
+</tr>
+<tr class="local">
+   <td>senderLevel</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+<p>DATA packet overhead contains all fields, making its total size 13 bytes
+SETUP packet does not contain sequence number field, making its size 12 bytes</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>netMacInfoExchange</td>
+   <td>
+      <i>
+<a href="src-node-communication-routing-NetMacInfoExchange_type.html">NetMacInfoExchange_type</a></i>
+   </td>
+   <td>
+</td>
+</tr>
+<tr class="inherited">
+   <td>source</td>
+   <td>
+      <i>
+string</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="inherited">
+   <td>destination</td>
+   <td>
+      <i>
+string</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="inherited">
+   <td>sequenceNumber</td>
+   <td>
+      <i>
+unsigned int</i>
+   </td>
+   <td>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">MultipathRingsRoutingPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">RoutingPacket</span><span style="color: #000000; ">
+{
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">multipathRingsRoutingPacketKind</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@enum</span><span style="color: #000000; ">(</span><span style="color: #000000; ">multipathRingsRoutingPacketDef</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// 1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">sinkID</span><span style="color: #000000; ">;			</span><span style="color: #808080; font-style: italic; ">// 2 bytes
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">senderLevel</span><span style="color: #000000; ">;	</span><span style="color: #808080; font-style: italic; ">// 1 byte
+</span><span style="color: #000000; ">
+	</span><span style="color: #808080; font-style: italic; ">//DATA packet overhead contains all fields, making its total size 13 bytes
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">//SETUP packet does not contain sequence number field, making its size 12 bytes
+</span><span style="color: #000000; ">}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

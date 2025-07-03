@@ -1,0 +1,75 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">NED File <i>src/node/resourceManager/ResourceManager.ned</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>
+   </td>
+   <td>
+<i>simple&nbsp;module</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//********************************************************************************
+//*  Copyright: National ICT Australia,  2007 - 2010                             *
+//*  Developed at the ATP lab, Networked Systems research theme                  *
+//*  Author(s): Athanassios Boulis, Dimosthenis Pediaditakis, Yuriy Tselishchev  *
+//*  This file is distributed under the terms in the attached LICENSE file.      *
+//*  If you do not find this file, copies can be found by writing to:            *
+//*                                                                              *
+//*      NICTA, Locked Bag 9013, Alexandria, NSW 1435, Australia                 *
+//*      Attention:  License Inquiry.                                            *
+//*                                                                              *
+//*******************************************************************************/
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">package</span><span style="color: #000000; "> </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">resourceManager</span><span style="color: #000000; ">;
+
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">ResourceManager</span><span style="color: #000000; "> {
+ </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+	</span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">collectTraceInfo</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">false</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">ramSize</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">.</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);			</span><span style="color: #808080; font-style: italic; ">//in kB
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">flashSize</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">.</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">//in kB
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">flashWriteCost</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">.</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//per kB
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">flashReadCost</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">.</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//per kB
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">imageSize</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">.</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">//the space that the OS (e.g. Contiki or TinyOS) occupies in the flash
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">cpuPowerSpeedLevelNames</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;&quot;</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">cpuPowerPerLevel</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;&quot;</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//spent energy per time unit
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">cpuSpeedPerLevel</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;&quot;</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">cpuInitialPowerLevel</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (-</span><span style="color: #008000; ">1</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// index for the cpuPowerLevels array
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">sigmaCPUClockDrift</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">.</span><span style="color: #008000; ">00003</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// the standard deviation of the Drift of the CPU
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">initialEnergy</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">18720</span><span style="color: #000000; ">);
+	</span><span style="color: #808080; font-style: italic; ">// energy of the node in Joules, default value corresponds to two AA batteries
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// source http://www.allaboutbatteries.com/Energy-tables.html
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">baselineNodePower</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">6</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// the baseline/minimum power consumption in mWatts
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">periodicEnergyCalculationInterval</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">1000</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// maximum interval for periodic energy calculation, in msec     
+</span><span style="color: #000000; ">
+ </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toSensorDevManager</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toApplication</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toNetwork</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toMac</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toRadio</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">powerConsumption</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@</span><span style="color: #000000; "> </span><span style="color: #000000; ">directIn</span><span style="color: #000000; ">;
+}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

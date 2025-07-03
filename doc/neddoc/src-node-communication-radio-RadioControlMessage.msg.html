@@ -1,0 +1,124 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Msg File <i>src/node/communication/radio/RadioControlMessage.msg</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="src-node-communication-radio-RadioControlMessage_type.html">RadioControlMessage_type</a>
+   </td>
+   <td>
+<i>enum</i>
+   </td>
+   <td>
+
+<p>These messages will be initiated by the radio and sent to upper layer</p>
+
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-radio-RadioControlMessage.html">RadioControlMessage</a>
+   </td>
+   <td>
+<i>message</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-radio-BasicState_type.html">BasicState_type</a>
+   </td>
+   <td>
+<i>enum</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-radio-RadioControlCommand_type.html">RadioControlCommand_type</a>
+   </td>
+   <td>
+<i>enum</i>
+   </td>
+   <td>
+
+<p>These commands will be received by the radio from upper layers</p>
+
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-radio-RadioControlCommand.html">RadioControlCommand</a>
+   </td>
+   <td>
+<i>message</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//****************************************************************************
+//*  Copyright: National ICT Australia,  2007 - 2010                         *
+//*  Developed at the ATP lab, Networked Systems research theme              *
+//*  Author(s): Athanassios Boulis, Yuriy Tselishchev                        *
+//*  This file is distributed under the terms in the attached LICENSE file.  *
+//*  If you do not find this file, copies can be found by writing to:        *
+//*                                                                          *
+//*      NICTA, Locked Bag 9013, Alexandria, NSW 1435, Australia             *
+//*      Attention:  License Inquiry.                                        *
+//*                                                                          *  
+//****************************************************************************/
+</span><span style="color: #000000; ">
+</span><span style="color: #808080; font-style: italic; ">// These messages will be initiated by the radio and sent to upper layer
+</span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> </span><span style="color: #000000; ">RadioControlMessage_type</span><span style="color: #000000; "> {
+	</span><span style="color: #000000; ">CARRIER_SENSE_INTERRUPT</span><span style="color: #000000; "> = </span><span style="color: #008000; ">1</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">RADIO_BUFFER_FULL</span><span style="color: #000000; "> = </span><span style="color: #008000; ">2</span><span style="color: #000000; ">;
+}
+
+</span><span style="color: #800000; font-weight: bold; ">message</span><span style="color: #000000; "> </span><span style="color: #000000; ">RadioControlMessage</span><span style="color: #000000; "> {
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">radioControlMessageKind</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> (</span><span style="color: #000000; ">RadioControlMessage_type</span><span style="color: #000000; ">);
+}
+
+</span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> </span><span style="color: #000000; ">BasicState_type</span><span style="color: #000000; "> {
+	</span><span style="color: #000000; ">RX</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">TX</span><span style="color: #000000; "> = </span><span style="color: #008000; ">1</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">SLEEP</span><span style="color: #000000; "> = </span><span style="color: #008000; ">2</span><span style="color: #000000; ">;
+}
+
+</span><span style="color: #808080; font-style: italic; ">// These commands will be received by the radio from upper layers
+</span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> </span><span style="color: #000000; ">RadioControlCommand_type</span><span style="color: #000000; "> {
+	</span><span style="color: #000000; ">SET_STATE</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">SET_MODE</span><span style="color: #000000; "> = </span><span style="color: #008000; ">1</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">SET_TX_OUTPUT</span><span style="color: #000000; "> = </span><span style="color: #008000; ">2</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">SET_SLEEP_LEVEL</span><span style="color: #000000; "> = </span><span style="color: #008000; ">3</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">SET_CARRIER_FREQ</span><span style="color: #000000; "> = </span><span style="color: #008000; ">4</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">SET_CCA_THRESHOLD</span><span style="color: #000000; "> = </span><span style="color: #008000; ">5</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">SET_CS_INTERRUPT_ON</span><span style="color: #000000; "> = </span><span style="color: #008000; ">6</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">SET_CS_INTERRUPT_OFF</span><span style="color: #000000; "> = </span><span style="color: #008000; ">7</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">SET_ENCODING</span><span style="color: #000000; "> = </span><span style="color: #008000; ">8</span><span style="color: #000000; ">;
+} 
+
+</span><span style="color: #800000; font-weight: bold; ">message</span><span style="color: #000000; "> </span><span style="color: #000000; ">RadioControlCommand</span><span style="color: #000000; "> {
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">radioControlCommandKind</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> (</span><span style="color: #000000; ">RadioControlCommand_type</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">state</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> (</span><span style="color: #000000; ">BasicState_type</span><span style="color: #000000; ">) = </span><span style="color: #000000; ">RX</span><span style="color: #000000; ">;	</span><span style="color: #808080; font-style: italic; ">//to be used with SET_STATE
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">parameter</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">.</span><span style="color: #008000; ">0</span><span style="color: #000000; ">;	</span><span style="color: #808080; font-style: italic; ">//to be used with SET_TX_OUTPUT, SET_CARRIER_FREQ, SET_CCA_THRESHOLD
+</span><span style="color: #000000; ">}
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

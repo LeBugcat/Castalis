@@ -1,0 +1,90 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">NED File <i>src/node/sensorManager/SensorManager.ned</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="node.sensorManager.SensorManager.html">SensorManager</a>
+   </td>
+   <td>
+<i>simple&nbsp;module</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//********************************************************************************
+//*  Copyright: National ICT Australia,  2007 - 2010                             *
+//*  Developed at the ATP lab, Networked Systems research theme                  *
+//*  Author(s): Athanassios Boulis, Dimosthenis Pediaditakis                     *
+//*  This file is distributed under the terms in the attached LICENSE file.      *
+//*  If you do not find this file, copies can be found by writing to:            *
+//*                                                                              *
+//*      NICTA, Locked Bag 9013, Alexandria, NSW 1435, Australia                 *
+//*      Attention:  License Inquiry.                                            *
+//*                                                                              *
+//*******************************************************************************/
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">package</span><span style="color: #000000; "> </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">sensorManager</span><span style="color: #000000; ">;
+
+</span><span style="color: #808080; font-style: italic; ">// Sensor Manager defines the parameters for all sensing devices (aka sensors) of a node
+// Here the default values are just for one sensor, but most of the parameters are string arrays
+// of commaseparated values, so we can define multiple sensors 
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">SensorManager</span><span style="color: #000000; "> {
+ </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+	</span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">collectTraceInfo</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">false</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">numSensingDevices</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">1</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">// how many sensing devices the node has 
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// (has to be &lt;= SensorNetwork.numPhysicalProcesses)
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">pwrConsumptionPerDevice</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;0.5&quot;</span><span style="color: #000000; ">);  </span><span style="color: #808080; font-style: italic; ">// string array of comma-separated power consumptions in mW
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">sensorTypes</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;Temperature&quot;</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// string array of comma-separated Names for the sensing devices
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">corrPhyProcess</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;0&quot;</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">//holds the indexes of the corresponding phy processes for
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">//each sensor (usually it should be : &quot;0 1 2 3&quot;)
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">maxSampleRates</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;10&quot;</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">//number of samples per second for each sensor
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">devicesBias</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;0.1&quot;</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">//If the output signal is not zero when the measured property is zero
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">devicesDrift</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;&quot;</span><span style="color: #000000; ">);			</span><span style="color: #808080; font-style: italic; ">//If the output signal slowly changes independent of the 
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">//measured property
+</span><span style="color: #000000; ">												
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">devicesNoise</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;0.1&quot;</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">//random deviation of the signal that varies in time
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">devicesHysterisis</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;&quot;</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//the sensor not instantly follows the change of the property 
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">//being measured and therefore involves the history of the 
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">//measured property
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">devicesSensitivity</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;0&quot;</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//holds the minimum value which can be sensed by each sensing device.
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">devicesResolution</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;0.001&quot;</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//holds the sensing resolution for each device 
+</span><span style="color: #000000; ">													</span><span style="color: #808080; font-style: italic; ">//(the returned value will always be a multiple of 
+</span><span style="color: #000000; ">													</span><span style="color: #808080; font-style: italic; ">//number, given here)
+</span><span style="color: #000000; ">													
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">devicesSaturation</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;1000&quot;</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//holds the saturation value for each sensing device
+</span><span style="color: #000000; ">
+ </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toApplicationModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toNodeContainerModule</span><span style="color: #000000; ">[];
+	</span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromNodeContainerModule</span><span style="color: #000000; ">[];
+	</span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromApplicationModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromResourceManager</span><span style="color: #000000; ">;
+}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

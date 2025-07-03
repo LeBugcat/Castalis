@@ -1,0 +1,306 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Msg File <i>src/node/communication/mac/baselineBanMac/BaselineMacPacket.msg</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-SecurityLevel_type.html">SecurityLevel_type</a>
+   </td>
+   <td>
+<i>enum</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-AcknowledgementPolicy_type.html">AcknowledgementPolicy_type</a>
+   </td>
+   <td>
+<i>enum</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-Frame_type.html">Frame_type</a>
+   </td>
+   <td>
+<i>enum</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-Frame_subtype.html">Frame_subtype</a>
+   </td>
+   <td>
+<i>enum</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-statusCode_type.html">statusCode_type</a>
+   </td>
+   <td>
+<i>enum</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-BaselineMacPacket.html">BaselineMacPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-BaselineBeaconPacket.html">BaselineBeaconPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-BaselineConnectionRequestPacket.html">BaselineConnectionRequestPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-BaselineConnectionAssignmentPacket.html">BaselineConnectionAssignmentPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-BaselineBAckPacket.html">BaselineBAckPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-BaselineTPollPacket.html">BaselineTPollPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//****************************************************************************
+//*  Copyright: National ICT Australia,  2007 - 2010                         *
+//*  Developed at the ATP lab, Networked Systems research theme              *
+//*  Author(s): Athanassios Boulis, Yuriy Tselishchev                        *
+//*  This file is distributed under the terms in the attached LICENSE file.  *
+//*  If you do not find this file, copies can be found by writing to:        *
+//*                                                                          *
+//*      NICTA, Locked Bag 9013, Alexandria, NSW 1435, Australia             *
+//*      Attention:  License Inquiry.                                        *
+//*                                                                          *  
+//****************************************************************************/
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">cplusplus</span><span style="color: #000000; "> {{
+#</span><span style="color: #000000; ">include</span><span style="color: #000000; "> </span><span style="color: #008000; ">&quot;node/communication/mac/MacPacket_m.h&quot;</span><span style="color: #000000; ">
+
+#</span><span style="color: #000000; ">define</span><span style="color: #000000; "> </span><span style="color: #000000; ">BASELINEBAN_HEADER_SIZE</span><span style="color: #000000; "> </span><span style="color: #008000; ">7</span><span style="color: #000000; ">
+#</span><span style="color: #000000; ">define</span><span style="color: #000000; "> </span><span style="color: #000000; ">BASELINEBAN_BEACON_SIZE</span><span style="color: #000000; "> </span><span style="color: #008000; ">17</span><span style="color: #000000; "> + </span><span style="color: #008000; ">7</span><span style="color: #000000; ">
+#</span><span style="color: #000000; ">define</span><span style="color: #000000; "> </span><span style="color: #000000; ">BASELINEBAN_CONNECTION_REQUEST_SIZE</span><span style="color: #000000; "> </span><span style="color: #008000; ">28</span><span style="color: #000000; "> + </span><span style="color: #008000; ">7</span><span style="color: #000000; ">
+#</span><span style="color: #000000; ">define</span><span style="color: #000000; "> </span><span style="color: #000000; ">BASELINEBAN_CONNECTION_ASSIGNMENT_SIZE</span><span style="color: #000000; "> </span><span style="color: #008000; ">29</span><span style="color: #000000; "> + </span><span style="color: #008000; ">7</span><span style="color: #000000; ">
+
+#</span><span style="color: #000000; ">define</span><span style="color: #000000; "> </span><span style="color: #000000; ">BROADCAST_NID</span><span style="color: #000000; "> </span><span style="color: #008000; ">255</span><span style="color: #000000; ">
+#</span><span style="color: #000000; ">define</span><span style="color: #000000; "> </span><span style="color: #000000; ">UNCONNECTED_BROADCAST_NID</span><span style="color: #000000; "> </span><span style="color: #008000; ">0</span><span style="color: #000000; ">
+
+}}
+
+</span><span style="color: #800000; font-weight: bold; ">class</span><span style="color: #000000; "> </span><span style="color: #000000; ">MacPacket</span><span style="color: #000000; ">;
+
+</span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> </span><span style="color: #000000; ">SecurityLevel_type</span><span style="color: #000000; "> {
+    </span><span style="color: #000000; ">NOT_SECURED</span><span style="color: #000000; ">	= </span><span style="color: #008000; ">1</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">AUTHENTICATED_NOT_ENCRYPTED</span><span style="color: #000000; "> = </span><span style="color: #008000; ">2</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">AUTHENTICATED_AND_ENCRYPTED</span><span style="color: #000000; "> = </span><span style="color: #008000; ">3</span><span style="color: #000000; ">;
+    </span><span style="color: #808080; font-style: italic; ">//RESERVED = 4; 
+</span><span style="color: #000000; ">}
+
+</span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> </span><span style="color: #000000; ">AcknowledgementPolicy_type</span><span style="color: #000000; "> {
+    </span><span style="color: #000000; ">N_ACK_POLICY</span><span style="color: #000000; "> = </span><span style="color: #008000; ">1</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">I_ACK_POLICY</span><span style="color: #000000; "> = </span><span style="color: #008000; ">2</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">L_ACK_POLICY</span><span style="color: #000000; "> = </span><span style="color: #008000; ">3</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">B_ACK_POLICY</span><span style="color: #000000; "> = </span><span style="color: #008000; ">4</span><span style="color: #000000; ">;
+}
+
+</span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> </span><span style="color: #000000; ">Frame_type</span><span style="color: #000000; "> {
+    </span><span style="color: #000000; ">MANAGEMENT</span><span style="color: #000000; "> = </span><span style="color: #008000; ">1</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">CONTROL</span><span style="color: #000000; "> = </span><span style="color: #008000; ">2</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">DATA</span><span style="color: #000000; "> = </span><span style="color: #008000; ">3</span><span style="color: #000000; ">;
+}
+
+</span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> </span><span style="color: #000000; ">Frame_subtype</span><span style="color: #000000; "> {
+    </span><span style="color: #000000; ">RESERVED</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">BEACON</span><span style="color: #000000; "> = </span><span style="color: #008000; ">1</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">ASSOCIATION</span><span style="color: #000000; "> = </span><span style="color: #008000; ">2</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">DISASSOCIATION</span><span style="color: #000000; "> = </span><span style="color: #008000; ">3</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">PTK</span><span style="color: #000000; "> = </span><span style="color: #008000; ">4</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">GTK</span><span style="color: #000000; "> = </span><span style="color: #008000; ">5</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">CONNECTION_REQUEST</span><span style="color: #000000; "> = </span><span style="color: #008000; ">6</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">CONNECTION_ASSIGNMENT</span><span style="color: #000000; "> = </span><span style="color: #008000; ">7</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">DISCONNECTION</span><span style="color: #000000; "> = </span><span style="color: #008000; ">8</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">I_ACK</span><span style="color: #000000; "> = </span><span style="color: #008000; ">9</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">B_ACK</span><span style="color: #000000; "> = </span><span style="color: #008000; ">10</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">I_ACK_POLL</span><span style="color: #000000; "> = </span><span style="color: #008000; ">11</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">B_ACK_POLL</span><span style="color: #000000; "> = </span><span style="color: #008000; ">12</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">POLL</span><span style="color: #000000; "> = </span><span style="color: #008000; ">13</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">T_POLL</span><span style="color: #000000; "> = </span><span style="color: #008000; ">14</span><span style="color: #000000; ">;
+}
+
+</span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> </span><span style="color: #000000; ">statusCode_type</span><span style="color: #000000; "> {
+    </span><span style="color: #000000; ">ACCEPTED</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">REJ_NO_BANDWIDTH</span><span style="color: #000000; "> = </span><span style="color: #008000; ">1</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">REJ_NO_NID</span><span style="color: #000000; "> = </span><span style="color: #008000; ">2</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">REJ_NO_RESOURCES</span><span style="color: #000000; "> = </span><span style="color: #008000; ">3</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">REJ_NO_HIGH_SECURITY</span><span style="color: #000000; "> = </span><span style="color: #008000; ">4</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">REJ_NO_LOW_SECURITY</span><span style="color: #000000; "> = </span><span style="color: #008000; ">5</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">REJ_NO_REASON</span><span style="color: #000000; "> = </span><span style="color: #008000; ">6</span><span style="color: #000000; ">;
+    </span><span style="color: #000000; ">MODIFIED</span><span style="color: #000000; "> = </span><span style="color: #008000; ">7</span><span style="color: #000000; ">;
+}
+
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineMacPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">MacPacket</span><span style="color: #000000; "> {
+    </span><span style="color: #808080; font-style: italic; ">//MAC Header fields
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">HID</span><span style="color: #000000; ">;										</span><span style="color: #808080; font-style: italic; ">//2 bytes, 2 last bytes of full MAC address
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">NID</span><span style="color: #000000; ">;										</span><span style="color: #808080; font-style: italic; ">//1 byte, short MAC address
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">//MAC header control fields
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">protocolVersion</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//2 bits
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">securityLevel</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; ">(</span><span style="color: #000000; ">SecurityLevel_type</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">//2 bits
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">TKindex</span><span style="color: #000000; ">;									</span><span style="color: #808080; font-style: italic; ">//1 bit
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">retry</span><span style="color: #000000; ">;										</span><span style="color: #808080; font-style: italic; ">//1 bit
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">ackPolicy</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; ">(</span><span style="color: #000000; ">AcknowledgementPolicy_type</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//2 bits	total: 1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">frameType</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; ">(</span><span style="color: #000000; ">Frame_type</span><span style="color: #000000; ">);					</span><span style="color: #808080; font-style: italic; ">//2 bits
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">frameSubtype</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; ">(</span><span style="color: #000000; ">Frame_subtype</span><span style="color: #000000; ">);			</span><span style="color: #808080; font-style: italic; ">//2 bits
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">moreData</span><span style="color: #000000; ">;									</span><span style="color: #808080; font-style: italic; ">//1 bit
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">firstFrame</span><span style="color: #000000; ">;									</span><span style="color: #808080; font-style: italic; ">//1 bit		total: 2 bytes
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">sequenceNum</span><span style="color: #000000; ">;								</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">fragmentNumber</span><span style="color: #000000; ">; 							</span><span style="color: #808080; font-style: italic; ">//3 bits
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">//reserved 5 bits											total: 4 bytes
+</span><span style="color: #000000; ">													</span><span style="color: #808080; font-style: italic; ">//			total header: 7 bytes
+</span><span style="color: #000000; ">}
+
+</span><span style="color: #808080; font-style: italic; ">// We define all different packet types that carry extra information on their 
+// packet body, as separate packets. All derived from BaselinePacket.
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineBeaconPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineMacPacket</span><span style="color: #000000; "> {
+    </span><span style="color: #808080; font-style: italic; ">//Beacon payload fields
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">senderAddress</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//6 bytes
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">beaconShiftingSequenceIndex</span><span style="color: #000000; ">; 			</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">beaconShiftingSequencePhase</span><span style="color: #000000; ">;			
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">beaconPeriodLength</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">allocationSlotLength</span><span style="color: #000000; ">;					</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">RAP1Length</span><span style="color: #000000; ">;								</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">RAP2Length</span><span style="color: #000000; ">;								</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">// 6 more bytes for capabilites and channel hopping state
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">//		total: 17 bytes + 7 bytes in header
+</span><span style="color: #000000; ">}
+
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineConnectionRequestPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineMacPacket</span><span style="color: #000000; "> {
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">recipientAddress</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//6 bytes
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">senderAddress</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//6 bytes
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">formerHubAddress</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//6 bytes
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">//4 bytes for capabilities and security
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">changeIndication</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">nextWakeup</span><span style="color: #000000; ">;								</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">wakeupInterval</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">uplinkRequest</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//these requests are complex structures of atleast 
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">downlinkRequest</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//atleast 7 bytes length, here we will simplyfy it
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">bilinkRequest</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//by saying that this particular number of slots
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">//is requested
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">//    		total: 28 bytes + 7 bytes in header
+</span><span style="color: #000000; ">}
+
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineConnectionAssignmentPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineMacPacket</span><span style="color: #000000; "> {
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">recipientAddress</span><span style="color: #000000; ">;                       </span><span style="color: #808080; font-style: italic; ">//6 bytes
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">senderAddress</span><span style="color: #000000; ">;                          </span><span style="color: #808080; font-style: italic; ">//6 bytes
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">channelDwellLength</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">channelDwellPhase</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">minRAPlength</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">statusCode</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; ">(</span><span style="color: #000000; ">statusCode_type</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">//4 bytes for capabilities and security
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">assignedNID</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">changeIndication</span><span style="color: #000000; ">;                       </span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">nextWakeup</span><span style="color: #000000; ">;								</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">wakeupinterval</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">uplinkRequestStart</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//these requests are complex structures of at least 
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">uplinkRequestEnd</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//7 bytes length, here we will simplify them
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">downlinkRequestStart</span><span style="color: #000000; ">;					</span><span style="color: #808080; font-style: italic; ">//by saying that this particular number of slots assigned
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">downlinkRequestEnd</span><span style="color: #000000; ">;
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">bilinkRequestStart</span><span style="color: #000000; ">;
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">bilinkRequestEnd</span><span style="color: #000000; ">;
+												</span><span style="color: #808080; font-style: italic; ">//		total: 29 bytes + 7 bytes in header
+</span><span style="color: #000000; ">}
+
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineBAckPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineMacPacket</span><span style="color: #000000; "> {
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">nextBlockSize</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">oldestFrameExpected</span><span style="color: #000000; ">;					</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">frameStatusBitmap</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">//		total: 3 bytes + 7 bytes in header
+</span><span style="color: #000000; ">}
+
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineTPollPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineMacPacket</span><span style="color: #000000; "> {
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">currentBeaconPeriod</span><span style="color: #000000; ">;				</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">currentAllocationSlot</span><span style="color: #000000; ">;				</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">currentSlotOffset</span><span style="color: #000000; ">;					</span><span style="color: #808080; font-style: italic; ">//2 byte
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">//the next two fields present only if NIC == UnconnectedBroadcast
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">beaconPeriodLength</span><span style="color: #000000; ">;					</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">allocationSlotLength</span><span style="color: #000000; ">;				</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">											</span><span style="color: #808080; font-style: italic; ">//if connected,	total: 4 bytes + 7 bytes in header
+</span><span style="color: #000000; ">											</span><span style="color: #808080; font-style: italic; ">//unconnected, 	total: 6 bytes + 7 bytes in header
+</span><span style="color: #000000; ">}
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

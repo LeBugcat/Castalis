@@ -1,0 +1,215 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Simple Module <i>WirelessChannel</i></h2>
+<b>Package:</b> wirelessChannel.defaultChannel<br/><b>File: <a href="src-wirelessChannel-defaultChannel-WirelessChannel.ned.html">src/wirelessChannel/defaultChannel/WirelessChannel.ned</a></b><br/><p>(no description)</p><h3 class="subtitle">Parameters:</h3>
+<table class="paramstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="defaultvalue">Default value</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td>false</td>
+   <td>   </td>
+</tr>
+<tr class="local">
+   <td>onlyStaticNodes</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td>true</td>
+   <td>
+<p>if NO mobility, set it to true for greater efficiency</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>xCellSize</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>5</td>
+   <td>
+<p>if we define cells (to handle mobility)</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>yCellSize</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>5</td>
+   <td>
+<p>how big are the cells in each dimension</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>zCellSize</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>1</td>
+   <td>
+   </td>
+</tr>
+<tr class="local">
+   <td>pathLossExponent</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>2.4</td>
+   <td>
+<p>how fast is the signal strength fading</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>PLd0</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>55</td>
+   <td>
+<p>path loss at reference distance d0 (in dBm)</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>d0</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>1.0</td>
+   <td>
+<p>reference distance d0 (in meters)</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>sigma</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>4.0</td>
+   <td>
+<p>how variable is the average fade for nodes at the same distance
+from eachother. std of a gaussian random variable.</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>bidirectionalSigma</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>1.0</td>
+   <td>
+<p>how variable is the average fade for link B-&gt;A if we know
+the fade of link A-&gt;B. std of a gaussian random variable</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>pathLossMapFile</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>describes a map of the connectivity based on pathloss
+if defined, then the parameters above become irrelevant</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>temporalModelParametersFile</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>the filename that contains all parameters for 
+the temporal channel variation model</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>signalDeliveryThreshold</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>-100</td>
+   <td>
+<p>threshold in dBm above which, wireless channel module
+is delivering signal messages to radio modules of 
+individual nodes</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Gates:</h3>
+<table class="gatestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Direction</th>
+      <th class="gatesize">Size</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>toNode [ ]</xsl:if></td>
+   <td><i>output</i></td>
+   <td></td>   <td></td>
+</tr>
+<tr class="local">
+   <td>fromMobilityModule</xsl:if></td>
+   <td><i>input</i></td>
+   <td></td>   <td></td>
+</tr>
+<tr class="local">
+   <td>fromNode [ ]</xsl:if></td>
+   <td><i>input</i></td>
+   <td></td>   <td></td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">WirelessChannel</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">wirelessChannel</span><span style="color: #000000; ">.</span><span style="color: #000000; ">iWirelessChannel</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">collectTraceInfo</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">false</span><span style="color: #000000; ">);
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">onlyStaticNodes</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">true</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">// if NO mobility, set it to true for greater efficiency 
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">xCellSize</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">5</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">// if we define cells (to handle mobility)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">yCellSize</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">5</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">// how big are the cells in each dimension
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">zCellSize</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">1</span><span style="color: #000000; ">);
+
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">pathLossExponent</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">2</span><span style="color: #000000; ">.</span><span style="color: #008000; ">4</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// how fast is the signal strength fading
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">PLd0</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">55</span><span style="color: #000000; ">);					</span><span style="color: #808080; font-style: italic; ">// path loss at reference distance d0 (in dBm)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">d0</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">1</span><span style="color: #000000; ">.</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);					</span><span style="color: #808080; font-style: italic; ">// reference distance d0 (in meters)
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">sigma</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">4</span><span style="color: #000000; ">.</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);				</span><span style="color: #808080; font-style: italic; ">// how variable is the average fade for nodes at the same distance
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// from eachother. std of a gaussian random variable.
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">bidirectionalSigma</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">1</span><span style="color: #000000; ">.</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// how variable is the average fade for link B-&gt;A if we know
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// the fade of link A-&gt;B. std of a gaussian random variable
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">pathLossMapFile</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;&quot;</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">// describes a map of the connectivity based on pathloss
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// if defined, then the parameters above become irrelevant
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">temporalModelParametersFile</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;&quot;</span><span style="color: #000000; ">);
+												</span><span style="color: #808080; font-style: italic; ">// the filename that contains all parameters for 
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// the temporal channel variation model
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">signalDeliveryThreshold</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(-</span><span style="color: #008000; ">100</span><span style="color: #000000; ">);
+												</span><span style="color: #808080; font-style: italic; ">// threshold in dBm above which, wireless channel module
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// is delivering signal messages to radio modules of 
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// individual nodes
+</span><span style="color: #000000; ">
+    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toNode</span><span style="color: #000000; ">[];
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromMobilityModule</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@directIn</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromNode</span><span style="color: #000000; ">[];
+}
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

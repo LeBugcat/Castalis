@@ -1,0 +1,96 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Packet <i>LeachRoutingPacket</i></h2>
+<b>File: <a href="src-node-communication-routing-leachRouting-LeachRoutingPacket.msg.html">src/node/communication/routing/leachRouting/LeachRoutingPacket.msg</a></b><br/><p>(no description)</p><h3 class="subtitle">Extends:</h3>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="src-node-communication-routing-RoutingPacket.html">RoutingPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Fields:</h3>
+<table class="fieldstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>LeachRoutingPacketKind</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+</td>
+</tr>
+<tr class="local">
+   <td>schedule</td>
+   <td>
+      <i>
+int[]</i>
+   </td>
+   <td>
+</td>
+</tr>
+<tr class="inherited">
+   <td>netMacInfoExchange</td>
+   <td>
+      <i>
+<a href="src-node-communication-routing-NetMacInfoExchange_type.html">NetMacInfoExchange_type</a></i>
+   </td>
+   <td>
+</td>
+</tr>
+<tr class="inherited">
+   <td>source</td>
+   <td>
+      <i>
+string</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="inherited">
+   <td>destination</td>
+   <td>
+      <i>
+string</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="inherited">
+   <td>sequenceNumber</td>
+   <td>
+      <i>
+unsigned int</i>
+   </td>
+   <td>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">LeachRoutingPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">RoutingPacket</span><span style="color: #000000; ">
+{
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">LeachRoutingPacketKind</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@enum</span><span style="color: #000000; ">(</span><span style="color: #000000; ">LeachRoutingPacket_Type</span><span style="color: #000000; ">);
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">schedule</span><span style="color: #000000; ">[];
+}
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

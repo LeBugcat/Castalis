@@ -1,0 +1,66 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">NED File <i>src/node/application/valueReporting/ValueReporting.ned</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="node.application.valueReporting.ValueReporting.html">ValueReporting</a>
+   </td>
+   <td>
+<i>simple&nbsp;module</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//***************************************************************************************
+//*  Copyright: National ICT Australia, 2007 - 2010                                     *
+//*  Developed at the ATP lab, Networked Systems research theme                         *
+//*  Author(s): Dimosthenis Pediaditakis, Yuriy Tselishchev                             *
+//*  This file is distributed under the terms in the attached LICENSE file.             *
+//*  If you do not find this file, copies can be found by writing to:                   *
+//*                                                                                     *
+//*      NICTA, Locked Bag 9013, Alexandria, NSW 1435, Australia                        *
+//*      Attention:  License Inquiry.                                                   *
+//*                                                                                     *
+//***************************************************************************************
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">package</span><span style="color: #000000; "> </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">application</span><span style="color: #000000; ">.</span><span style="color: #000000; ">valueReporting</span><span style="color: #000000; ">;
+
+</span><span style="color: #808080; font-style: italic; ">// The sensor node module. Connects to the wireless channel in order to communicate 
+// with other nodes. Connects to psysical processes so it can sample them.
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">ValueReporting</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">application</span><span style="color: #000000; ">.</span><span style="color: #000000; ">iApplication</span><span style="color: #000000; "> {
+ </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+ 	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">applicationID</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;valueReporting&quot;</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">collectTraceInfo</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">true</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">priority</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">1</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">packetHeaderOverhead</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">8</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// in bytes
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">constantDataPayload</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">12</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// in bytes
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">maxSampleInterval</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">60000</span><span style="color: #000000; ">);</span><span style="color: #808080; font-style: italic; ">// in msec
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">minSampleInterval</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">1000</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// in msec
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">isSink</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">false</span><span style="color: #000000; ">);
+
+ </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+ 	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toCommunicationModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toSensorDeviceManager</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromCommunicationModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromSensorDeviceManager</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromResourceManager</span><span style="color: #000000; ">;
+}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

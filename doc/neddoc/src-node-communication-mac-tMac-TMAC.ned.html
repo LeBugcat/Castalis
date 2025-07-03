@@ -1,0 +1,94 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">NED File <i>src/node/communication/mac/tMac/TMAC.ned</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="node.communication.mac.tMac.TMAC.html">TMAC</a>
+   </td>
+   <td>
+<i>simple&nbsp;module</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//****************************************************************************
+//*  Copyright: National ICT Australia,  2007 - 2010                         *
+//*  Developed at the ATP lab, Networked Systems research theme              *
+//*  Author(s): Athanassios Boulis, Yuriy Tselishchev                        *
+//*  This file is distributed under the terms in the attached LICENSE file.  *
+//*  If you do not find this file, copies can be found by writing to:        *
+//*                                                                          *
+//*      NICTA, Locked Bag 9013, Alexandria, NSW 1435, Australia             *
+//*      Attention:  License Inquiry.                                        *
+//*                                                                          *  
+//****************************************************************************/
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">package</span><span style="color: #000000; "> </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mac</span><span style="color: #000000; ">.</span><span style="color: #000000; ">tMac</span><span style="color: #000000; ">;
+
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">TMAC</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mac</span><span style="color: #000000; ">.</span><span style="color: #000000; ">iMac</span><span style="color: #000000; "> {
+ </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+    </span><span style="color: #808080; font-style: italic; ">//debug parameters
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">collectTraceInfo</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">false</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">printStateTransitions</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">false</span><span style="color: #000000; ">);
+
+	</span><span style="color: #808080; font-style: italic; ">//mac layer packet sizes, these parameters are described in TMacFrame.msg file
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">ackPacketSize</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">11</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">syncPacketSize</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">11</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">rtsPacketSize</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">13</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">ctsPacketSize</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">13</span><span style="color: #000000; ">);
+
+	</span><span style="color: #808080; font-style: italic; ">//mac layer parameters
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">macMaxPacketSize</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">//no limit on frame size
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">macPacketOverhead</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">11</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//DATA frame overhead is described in TMacFrame.msg
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">macBufferSize</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">32</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">//buffer of 32 packets by default
+</span><span style="color: #000000; ">
+	</span><span style="color: #808080; font-style: italic; ">//TMAC protocol parameters
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">maxTxRetries</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">2</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">allowSinkSync</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">true</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//This parameter allows sink node to start synchronisation immediately
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">useFrts</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">false</span><span style="color: #000000; ">);			</span><span style="color: #808080; font-style: italic; ">//enable/disable FRTS (Future Request To Send), true value not supported
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">useRtsCts</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">true</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">//This allows to enable/disable RTS/CTS handshake
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">disableTAextension</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">false</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//disabling TA extension effectively creates an SMAC protocol
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">conservativeTA</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">true</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//conservative activation timeout - will always stay awake for 
+</span><span style="color: #000000; ">											</span><span style="color: #808080; font-style: italic; ">//atleast 15 ms after any activity on the radio
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">resyncTime</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">6</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">// timer for re-sending SYNC msg, in seconds
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">contentionPeriod</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">10</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// 10 ms
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">listenTimeout</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">15</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// 15 ms, is the timeout TA (Activation event)
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">waitTimeout</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">5</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">// timeout for expecting a reply to DATA or RTS packet
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">frameTime</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">610</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">// frame time (standard = 610ms)
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">collisionResolution</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">1</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// collision resolution mechanism, choose from 
+</span><span style="color: #000000; ">											</span><span style="color: #808080; font-style: italic; ">//      0 - immediate retry (low collision avoidance)
+</span><span style="color: #000000; ">											</span><span style="color: #808080; font-style: italic; ">//      1 - based on overhearing (default)
+</span><span style="color: #000000; ">											</span><span style="color: #808080; font-style: italic; ">//      2 - retry next frame (aggressive collision avoidance)
+</span><span style="color: #000000; ">
+	</span><span style="color: #808080; font-style: italic; ">//parameters dependent on physical layer
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">phyDelayForValidCS</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">.</span><span style="color: #008000; ">128</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">phyDataRate</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">250</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">phyFrameOverhead</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">6</span><span style="color: #000000; ">);
+
+ </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toNetworkModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toRadioModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromNetworkModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromRadioModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromCommModuleResourceMgr</span><span style="color: #000000; ">;
+}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

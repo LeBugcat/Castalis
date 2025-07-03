@@ -1,0 +1,92 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Msg File <i>src/node/communication/mac/tMac/TMacPacket.msg</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-tMac-TmacPacket_type.html">TmacPacket_type</a>
+   </td>
+   <td>
+<i>enum</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-tMac-TMacPacket.html">TMacPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//****************************************************************************
+//*  Copyright: National ICT Australia,  2007 - 2011                         *
+//*  Developed at the ATP lab, Networked Systems research theme              *
+//*  Author(s): Athanassios Boulis, Yuriy Tselishchev                        *
+//*  This file is distributed under the terms in the attached LICENSE file.  *
+//*  If you do not find this file, copies can be found by writing to:        *
+//*                                                                          *
+//*      NICTA, Locked Bag 9013, Alexandria, NSW 1435, Australia             *
+//*      Attention:  License Inquiry.                                        *
+//*                                                                          *  
+//****************************************************************************/
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">cplusplus</span><span style="color: #000000; "> {{
+#</span><span style="color: #000000; ">include</span><span style="color: #000000; "> </span><span style="color: #008000; ">&quot;node/communication/mac/MacPacket_m.h&quot;</span><span style="color: #000000; ">
+}}
+
+</span><span style="color: #800000; font-weight: bold; ">class</span><span style="color: #000000; "> </span><span style="color: #000000; ">MacPacket</span><span style="color: #000000; ">;
+
+</span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> </span><span style="color: #000000; ">TmacPacket_type</span><span style="color: #000000; "> {
+	</span><span style="color: #000000; ">SYNC_TMAC_PACKET</span><span style="color: #000000; "> = </span><span style="color: #008000; ">1</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">RTS_TMAC_PACKET</span><span style="color: #000000; "> = </span><span style="color: #008000; ">2</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">CTS_TMAC_PACKET</span><span style="color: #000000; "> = </span><span style="color: #008000; ">3</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">DS_TMAC_PACKET</span><span style="color: #000000; "> = </span><span style="color: #008000; ">4</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">FRTS_TMAC_PACKET</span><span style="color: #000000; "> = </span><span style="color: #008000; ">5</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">DATA_TMAC_PACKET</span><span style="color: #000000; "> = </span><span style="color: #008000; ">6</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">ACK_TMAC_PACKET</span><span style="color: #000000; "> = </span><span style="color: #008000; ">7</span><span style="color: #000000; ">;
+}
+
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">TMacPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">MacPacket</span><span style="color: #000000; "> {
+	</span><span style="color: #808080; font-style: italic; ">// This a basic field, essential for any packet
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// size including source and destination field (found 
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// in the generic MacPAcket) is 9 bytes in total
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">type</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> (</span><span style="color: #000000; ">TmacPacket_type</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// 1 byte
+</span><span style="color: #000000; ">
+	</span><span style="color: #808080; font-style: italic; ">// RTS and CTS frames also contain nav field, bringing their size to 13 bytes
+</span><span style="color: #000000; ">	</span><span style="color: #000000; ">simtime_t</span><span style="color: #000000; "> </span><span style="color: #000000; ">nav</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;					</span><span style="color: #808080; font-style: italic; ">// 4 bytes
+</span><span style="color: #000000; ">
+	</span><span style="color: #808080; font-style: italic; ">// Sequence number is essential for ACK and DATA frames, but they do not 
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// contain NAV field, therefore the size of ACK packet and MAC 
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// layer overhead in general is 11 bytes. We use the field in the
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// generic MacPacket and count it as 2 bytes.
+</span><span style="color: #000000; ">
+	</span><span style="color: #808080; font-style: italic; ">// SYNC packet has only three fields: sequence number, sync value and sync ID, 
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// making its total size only 11 bytes (1 extra byte comes from packet type) 
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// In reality, SYNC id would probably be stored in source field and sync 
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// value in NAV field. But in this model we do not create a separate packet 
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// subclass for each packet type
+</span><span style="color: #000000; ">	</span><span style="color: #000000; ">simtime_t</span><span style="color: #000000; "> </span><span style="color: #000000; ">sync</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;					</span><span style="color: #808080; font-style: italic; ">// 4 bytes
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">syncId</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">// 4 bytes
+</span><span style="color: #000000; ">}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

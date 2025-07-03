@@ -1,0 +1,367 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Compound Module <i>CommunicationModule</i></h2>
+<b>Package:</b> node.communication<br/><b>File: <a href="src-node-communication-CommunicationModule.ned.html">src/node/communication/CommunicationModule.ned</a></b><br/><p>(no description)</p><h3 class="subtitle">Used in compound modules:</h3>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="node.Node.html">Node</a>
+   </td>
+   <td>
+<i>compound&nbsp;module</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="defaultvalue">Default value</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>MACProtocolName</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"BypassMAC"</td>
+   <td>   </td>
+</tr>
+<tr class="local">
+   <td>RoutingProtocolName</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"BypassRouting"</td>
+   <td>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Gates:</h3>
+<table class="gatestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Direction</th>
+      <th class="gatesize">Size</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>toApplicationModule</xsl:if></td>
+   <td><i>output</i></td>
+   <td></td>   <td></td>
+</tr>
+<tr class="local">
+   <td>toNodeContainerModule</xsl:if></td>
+   <td><i>output</i></td>
+   <td></td>   <td></td>
+</tr>
+<tr class="local">
+   <td>fromApplicationModule</xsl:if></td>
+   <td><i>input</i></td>
+   <td></td>   <td></td>
+</tr>
+<tr class="local">
+   <td>fromNodeContainerModule</xsl:if></td>
+   <td><i>input</i></td>
+   <td></td>   <td></td>
+</tr>
+<tr class="local">
+   <td>fromResourceManager2Net</xsl:if></td>
+   <td><i>input</i></td>
+   <td></td>   <td></td>
+</tr>
+<tr class="local">
+   <td>fromResourceManager2Mac</xsl:if></td>
+   <td><i>input</i></td>
+   <td></td>   <td></td>
+</tr>
+<tr class="local">
+   <td>fromResourceManager2Radio</xsl:if></td>
+   <td><i>input</i></td>
+   <td></td>   <td>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Unassigned submodule parameters:</h3>
+<table class="deepparamstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="defaultvalue">Default value</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td>false</td>
+   <td>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.RadioParametersFile</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>variable points to the file that cointains most radio parameters</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.mode</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>we can choose a mode to begin with. Modes are defined in the
+RadioParametersFile. Empty string means use the first mode defined</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.state</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"RX"</td>
+   <td>
+<p>we can choose a radio state to begin with. RX and TX are always there.
+according to the radio defined we can choose from a different set of sleep states</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.TxOutputPower</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>we can choose a Txpower to begin with. Possible tx power values 
+are defined in the RadioParametersFile. Empty string means use 
+the first tx power defined (which is also the highest)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.sleepLevel</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>we can choose a sleep level which will be used when a transition to SLEEP state
+is requested. Empty string means use first level defined (will usually be the fastest
+and most energy consuming sleep state)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.carrierFreq</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>2400.0</td>
+   <td>
+<p>the carrier frequency (in MHz) to begin with.</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.collisionModel</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>2</td>
+   <td>
+<p>0-&gt; No interference
+1-&gt; Simple interference
+2-&gt; Additive interefence
+3-&gt; Advanced interference (not implemented)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.CCAthreshold</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>-95.0</td>
+   <td>
+<p>the threshold of the RSSI register (in dBm) 
+were above it channel is NOT clear</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.symbolsForRSSI</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>8</td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.carrierSenseInterruptEnabled</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td>false</td>
+   <td>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.bufferSize</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>16</td>
+   <td>
+<p>in number of frames</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.maxPhyFrameSize</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>1024</td>
+   <td>
+<p>in bytes</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.radio.Radio.html">Radio</a>.phyFrameOverhead</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>6</td>
+   <td>
+<p>in bytes (802.15.4. = 6 bytes)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.mac.iMac.html">MAC</a>.collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.mac.iMac.html">MAC</a>.macMaxPacketSize</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>in bytes</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.mac.iMac.html">MAC</a>.macBufferSize</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>in number of messages</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.mac.iMac.html">MAC</a>.macPacketOverhead</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.routing.iRouting.html">Routing</a>.collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.routing.iRouting.html">Routing</a>.maxNetFrameSize</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>in bytes</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.routing.iRouting.html">Routing</a>.netDataFrameOverhead</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>in bytes</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.communication.routing.iRouting.html">Routing</a>.netBufferSize</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>in number of messages</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">module</span><span style="color: #000000; "> </span><span style="color: #000000; ">CommunicationModule</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">MACProtocolName</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;BypassMAC&quot;</span><span style="color: #000000; ">);
+        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">RoutingProtocolName</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;BypassRouting&quot;</span><span style="color: #000000; ">);
+
+    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toApplicationModule</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toNodeContainerModule</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromApplicationModule</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromNodeContainerModule</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromResourceManager2Net</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromResourceManager2Mac</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromResourceManager2Radio</span><span style="color: #000000; ">;
+
+    </span><span style="color: #800000; font-weight: bold; ">submodules</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">Radio</span><span style="color: #000000; ">: </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">radio</span><span style="color: #000000; ">.</span><span style="color: #000000; ">Radio</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">MAC</span><span style="color: #000000; ">: &lt;</span><span style="color: #000000; ">MACProtocolName</span><span style="color: #000000; ">&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mac</span><span style="color: #000000; ">.</span><span style="color: #000000; ">iMac</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">Routing</span><span style="color: #000000; ">: &lt;</span><span style="color: #000000; ">RoutingProtocolName</span><span style="color: #000000; ">&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">routing</span><span style="color: #000000; ">.</span><span style="color: #000000; ">iRouting</span><span style="color: #000000; ">;
+    </span><span style="color: #800000; font-weight: bold; ">connections</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">fromApplicationModule</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Routing</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromCommunicationModule</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">Routing</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toCommunicationModule</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">toApplicationModule</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">Routing</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toMacModule</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">MAC</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromNetworkModule</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">MAC</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toNetworkModule</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Routing</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromMacModule</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">MAC</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toRadioModule</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Radio</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromMacModule</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">Radio</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toMacModule</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">MAC</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromRadioModule</span><span style="color: #000000; ">;
+
+        </span><span style="color: #000000; ">fromNodeContainerModule</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Radio</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromCommunicationModule</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">Radio</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toCommunicationModule</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">toNodeContainerModule</span><span style="color: #000000; ">;
+
+        </span><span style="color: #000000; ">fromResourceManager2Net</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Routing</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromCommModuleResourceMgr</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">fromResourceManager2Mac</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">MAC</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromCommModuleResourceMgr</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">fromResourceManager2Radio</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Radio</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromCommModuleResourceMgr</span><span style="color: #000000; ">;
+}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

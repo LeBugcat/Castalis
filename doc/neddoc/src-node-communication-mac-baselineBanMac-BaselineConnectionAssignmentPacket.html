@@ -1,0 +1,384 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Packet <i>BaselineConnectionAssignmentPacket</i></h2>
+<b>File: <a href="src-node-communication-mac-baselineBanMac-BaselineMacPacket.msg.html">src/node/communication/mac/baselineBanMac/BaselineMacPacket.msg</a></b><br/><p>(no description)</p><h3 class="subtitle">Extends:</h3>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-BaselineMacPacket.html">BaselineMacPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Fields:</h3>
+<table class="fieldstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>recipientAddress</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>6 bytes</p>
+</td>
+</tr>
+<tr class="local">
+   <td>senderAddress</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>6 bytes</p>
+</td>
+</tr>
+<tr class="local">
+   <td>channelDwellLength</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+</td>
+</tr>
+<tr class="local">
+   <td>channelDwellPhase</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+</td>
+</tr>
+<tr class="local">
+   <td>minRAPlength</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+</td>
+</tr>
+<tr class="local">
+   <td>statusCode</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+</td>
+</tr>
+<tr class="local">
+   <td>assignedNID</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>4 bytes for capabilities and security</p>
+</td>
+</tr>
+<tr class="local">
+   <td>changeIndication</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+</td>
+</tr>
+<tr class="local">
+   <td>nextWakeup</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+</td>
+</tr>
+<tr class="local">
+   <td>wakeupinterval</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+</td>
+</tr>
+<tr class="local">
+   <td>uplinkRequestStart</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>these requests are complex structures of at least</p>
+</td>
+</tr>
+<tr class="local">
+   <td>uplinkRequestEnd</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>7 bytes length, here we will simplify them</p>
+</td>
+</tr>
+<tr class="local">
+   <td>downlinkRequestStart</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>by saying that this particular number of slots assigned</p>
+</td>
+</tr>
+<tr class="local">
+   <td>downlinkRequestEnd</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="local">
+   <td>bilinkRequestStart</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="local">
+   <td>bilinkRequestEnd</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>total: 29 bytes + 7 bytes in header</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>HID</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>MAC Header fields</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>NID</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte, short MAC address</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>protocolVersion</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>MAC header control fields</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>securityLevel</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>2 bits</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>TKindex</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 bit</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>retry</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 bit</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>ackPolicy</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>2 bits	total: 1 byte</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>frameType</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>2 bits</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>frameSubtype</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>2 bits</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>moreData</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 bit</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>firstFrame</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 bit		total: 2 bytes</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>sequenceNum</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>fragmentNumber</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>3 bits
+reserved 5 bits											total: 4 bytes
+			total header: 7 bytes</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>macRadioInfoExchange</td>
+   <td>
+      <i>
+<a href="src-node-communication-mac-MacRadioInfoExchange_type.html">MacRadioInfoExchange_type</a></i>
+   </td>
+   <td>
+</td>
+</tr>
+<tr class="inherited">
+   <td>source</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="inherited">
+   <td>destination</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="inherited">
+   <td>sequenceNumber</td>
+   <td>
+      <i>
+unsigned int</i>
+   </td>
+   <td>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineConnectionAssignmentPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineMacPacket</span><span style="color: #000000; ">
+{
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">recipientAddress</span><span style="color: #000000; ">;                       </span><span style="color: #808080; font-style: italic; ">//6 bytes
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">senderAddress</span><span style="color: #000000; ">;                          </span><span style="color: #808080; font-style: italic; ">//6 bytes
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">channelDwellLength</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">channelDwellPhase</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">minRAPlength</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">statusCode</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@enum</span><span style="color: #000000; ">(</span><span style="color: #000000; ">statusCode_type</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">//4 bytes for capabilities and security
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">assignedNID</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">changeIndication</span><span style="color: #000000; ">;                       </span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">nextWakeup</span><span style="color: #000000; ">;								</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">wakeupinterval</span><span style="color: #000000; ">;							</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">uplinkRequestStart</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//these requests are complex structures of at least 
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">uplinkRequestEnd</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">//7 bytes length, here we will simplify them
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">downlinkRequestStart</span><span style="color: #000000; ">;					</span><span style="color: #808080; font-style: italic; ">//by saying that this particular number of slots assigned
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">downlinkRequestEnd</span><span style="color: #000000; ">;
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">bilinkRequestStart</span><span style="color: #000000; ">;
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">bilinkRequestEnd</span><span style="color: #000000; ">;
+												</span><span style="color: #808080; font-style: italic; ">//		total: 29 bytes + 7 bytes in header
+</span><span style="color: #000000; ">}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

@@ -1,0 +1,81 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Msg File <i>src/node/application/ApplicationPacket.msg</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="src-node-application-AppNetInfoExchange_type.html">AppNetInfoExchange_type</a>
+   </td>
+   <td>
+<i>struct</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-application-ApplicationPacket.html">ApplicationPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//********************************************************************************
+//*  Copyright: National ICT Australia,  2007 - 2011                             *
+//*  Developed at the ATP lab, Networked Systems research theme                  *
+//*  Author(s): Yuriy Tselishchev, Athanassios Boulis                            *
+//*  This file is distributed under the terms in the attached LICENSE file.      *
+//*  If you do not find this file, copies can be found by writing to:            *
+//*                                                                              *
+//*      NICTA, Locked Bag 9013, Alexandria, NSW 1435, Australia                 *
+//*      Attention:  License Inquiry.                                            *
+//*                                                                              *
+//*******************************************************************************/
+</span><span style="color: #000000; ">
+</span><span style="color: #808080; font-style: italic; ">// We need to pass information between app and routing layer which is external to
+// the packet i.e. not carried by a real packet (e.g., which is the destination,
+// or what was the RSSI for the packet received) but this information is related
+// to the specific packet. Since information is passed between modules with
+// messages/packets, we decided to encode this kind of external info as a 
+// separate structure in the packet. The fields there are handled by the
+// virtualApp and virtualRouting code, setting a framework of interaction.
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">struct</span><span style="color: #000000; "> </span><span style="color: #000000; ">AppNetInfoExchange_type</span><span style="color: #000000; "> {
+	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">RSSI</span><span style="color: #000000; ">;	</span><span style="color: #808080; font-style: italic; ">// the RSSI of the received packet
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">LQI</span><span style="color: #000000; ">;		</span><span style="color: #808080; font-style: italic; ">// the LQI of the received packet
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">source</span><span style="color: #000000; ">;	</span><span style="color: #808080; font-style: italic; ">// the routing layer source of the received packet
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">destination</span><span style="color: #000000; ">;	</span><span style="color: #808080; font-style: italic; ">// the routing layer dest of the packet to be sent
+</span><span style="color: #000000; ">	</span><span style="color: #000000; ">simtime_t</span><span style="color: #000000; "> </span><span style="color: #000000; ">timestamp</span><span style="color: #000000; ">;	</span><span style="color: #808080; font-style: italic; ">// creation timestamp of the received packet 
+</span><span style="color: #000000; ">} 
+
+</span><span style="color: #808080; font-style: italic; ">// A generic application packet. If defining your own packet you have to extend
+// from this packet. You do not have to use the fields already defined, and you
+// can always define your own size.
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">ApplicationPacket</span><span style="color: #000000; "> {
+	</span><span style="color: #000000; ">AppNetInfoExchange_type</span><span style="color: #000000; "> </span><span style="color: #000000; ">appNetInfoExchange</span><span style="color: #000000; ">;
+
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">applicationID</span><span style="color: #000000; ">;		</span><span style="color: #808080; font-style: italic; ">// virtual app uses application ID to filter packet delivery.
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">unsigned</span><span style="color: #000000; "> </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">sequenceNumber</span><span style="color: #000000; ">;</span><span style="color: #808080; font-style: italic; ">// a field to distinguish between packets
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">data</span><span style="color: #000000; ">;				</span><span style="color: #808080; font-style: italic; ">// a simple type to carry some data
+</span><span style="color: #000000; ">}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

@@ -1,0 +1,91 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Packet <i>ValueReportingDataPacket</i></h2>
+<b>File: <a href="src-node-application-valueReporting-ValueReportingPacket.msg.html">src/node/application/valueReporting/ValueReportingPacket.msg</a></b><br/><p>(no description)</p><h3 class="subtitle">Extends:</h3>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="src-node-application-ApplicationPacket.html">ApplicationPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Fields:</h3>
+<table class="fieldstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>extraData</td>
+   <td>
+      <i>
+<a href="src-node-application-valueReporting-ValueReportData.html">ValueReportData</a></i>
+   </td>
+   <td></td>
+</tr>
+<tr class="inherited">
+   <td>appNetInfoExchange</td>
+   <td>
+      <i>
+<a href="src-node-application-AppNetInfoExchange_type.html">AppNetInfoExchange_type</a></i>
+   </td>
+   <td>
+</td>
+</tr>
+<tr class="inherited">
+   <td>applicationID</td>
+   <td>
+      <i>
+string</i>
+   </td>
+   <td>
+<p>virtual app uses application ID to filter packet delivery.</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>sequenceNumber</td>
+   <td>
+      <i>
+unsigned int</i>
+   </td>
+   <td>
+<p>a field to distinguish between packets</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>data</td>
+   <td>
+      <i>
+double</i>
+   </td>
+   <td>
+<p>a simple type to carry some data</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">ValueReportingDataPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">ApplicationPacket</span><span style="color: #000000; ">
+{
+    </span><span style="color: #000000; ">ValueReportData</span><span style="color: #000000; "> </span><span style="color: #000000; ">extraData</span><span style="color: #000000; ">;
+}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

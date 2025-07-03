@@ -1,0 +1,78 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Msg File <i>src/node/communication/routing/leachRouting/LeachRoutingPacket.msg</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="src-node-communication-routing-leachRouting-LeachRoutingPacket_Type.html">LeachRoutingPacket_Type</a>
+   </td>
+   <td>
+<i>enum</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="src-node-communication-routing-leachRouting-LeachRoutingPacket.html">LeachRoutingPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//****************************************************************************
+//*  Copyright (c) Federal University of Para, brazil - 2011                 *
+//*  Developed at the Research Group on Computer Network and Multimedia      *
+//*  Communication (GERCOM)     				             *
+//*  All rights reserved    				                     *
+//*                                                                          *
+//*  Permission to use, copy, modify, and distribute this protocol and its   *
+//*  documentation for any purpose, without fee, and without written         *
+//*  agreement is hereby granted, provided that the above copyright notice,  *
+//*  and the author appear in all copies of this protocol.                   *
+//*                                                                          *
+//*  Module:   LEACH Clustering Protocol for Castalia Simulator              *
+//*  Version:  0.2                                                           *
+//*  Author(s): Adonias Pires &lt;adonias@ufpa.br&gt;                              *
+//*             Claudio Silva &lt;claudio.silva@itec.ufpa.br&gt;                   *
+//****************************************************************************/
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">cplusplus</span><span style="color: #000000; "> {{
+#</span><span style="color: #000000; ">include</span><span style="color: #000000; "> </span><span style="color: #008000; ">&quot;node/communication/routing/RoutingPacket_m.h&quot;</span><span style="color: #000000; ">
+}}
+
+</span><span style="color: #800000; font-weight: bold; ">class</span><span style="color: #000000; "> </span><span style="color: #000000; ">RoutingPacket</span><span style="color: #000000; ">;
+
+
+</span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> </span><span style="color: #000000; ">LeachRoutingPacket_Type</span><span style="color: #000000; ">
+{
+	</span><span style="color: #000000; ">LEACH_ROUTING_ADV_PACKET</span><span style="color: #000000; "> 	= </span><span style="color: #008000; ">1</span><span style="color: #000000; ">;		
+	</span><span style="color: #000000; ">LEACH_ROUTING_JOIN_PACKET</span><span style="color: #000000; "> 	= </span><span style="color: #008000; ">2</span><span style="color: #000000; ">;		
+	</span><span style="color: #000000; ">LEACH_ROUTING_TDMA_PACKET</span><span style="color: #000000; "> 	= </span><span style="color: #008000; ">3</span><span style="color: #000000; ">;		
+	</span><span style="color: #000000; ">LEACH_ROUTING_DATA_PACKET</span><span style="color: #000000; "> 	= </span><span style="color: #008000; ">4</span><span style="color: #000000; ">;
+};
+
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">LeachRoutingPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">RoutingPacket</span><span style="color: #000000; ">
+{	
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">LeachRoutingPacketKind</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">enum</span><span style="color: #000000; "> (</span><span style="color: #000000; ">LeachRoutingPacket_Type</span><span style="color: #000000; ">);   
+	</span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">schedule</span><span style="color: #000000; ">[];		
+};
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

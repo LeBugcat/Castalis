@@ -1,0 +1,57 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Struct <i>ValueReportData</i></h2>
+<b>File: <a href="src-node-application-valueReporting-ValueReportingPacket.msg.html">src/node/application/valueReporting/ValueReportingPacket.msg</a></b><br/><p>(no description)</p><h3 class="subtitle">Fields:</h3>
+<table class="fieldstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>nodeID</td>
+   <td>
+      <i>
+unsigned short</i>
+   </td>
+   <td>
+<p>the ID of the <a href="node.Node.html">Node</a></p>
+</td>
+</tr>
+<tr class="local">
+   <td>locX</td>
+   <td>
+      <i>
+double</i>
+   </td>
+   <td>
+<p>x-coordinate of the node</p>
+</td>
+</tr>
+<tr class="local">
+   <td>locY</td>
+   <td>
+      <i>
+double</i>
+   </td>
+   <td>
+<p>y-coordinate of the node</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">struct</span><span style="color: #000000; "> </span><span style="color: #000000; ">ValueReportData</span><span style="color: #000000; ">
+{
+    </span><span style="color: #000080; font-weight: bold; ">unsigned</span><span style="color: #000000; "> </span><span style="color: #000080; font-weight: bold; ">short</span><span style="color: #000000; "> </span><span style="color: #000000; ">nodeID</span><span style="color: #000000; ">;	</span><span style="color: #808080; font-style: italic; ">//the ID of the Node
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">locX</span><span style="color: #000000; ">;			</span><span style="color: #808080; font-style: italic; ">// x-coordinate of the node
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">locY</span><span style="color: #000000; ">;			</span><span style="color: #808080; font-style: italic; ">// y-coordinate of the node
+</span><span style="color: #000000; ">}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

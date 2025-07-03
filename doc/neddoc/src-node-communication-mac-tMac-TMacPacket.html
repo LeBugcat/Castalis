@@ -1,0 +1,143 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Packet <i>TMacPacket</i></h2>
+<b>File: <a href="src-node-communication-mac-tMac-TMacPacket.msg.html">src/node/communication/mac/tMac/TMacPacket.msg</a></b><br/><p>(no description)</p><h3 class="subtitle">Extends:</h3>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-MacPacket.html">MacPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Fields:</h3>
+<table class="fieldstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>type</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>This a basic field, essential for any packet
+size including source and destination field (found 
+in the generic MacPAcket) is 9 bytes in total</p>
+</td>
+</tr>
+<tr class="local">
+   <td>nav</td>
+   <td>
+      <i>
+simtime_t</i>
+   </td>
+   <td>
+<p>RTS and CTS frames also contain nav field, bringing their size to 13 bytes</p>
+</td>
+</tr>
+<tr class="local">
+   <td>sync</td>
+   <td>
+      <i>
+simtime_t</i>
+   </td>
+   <td>
+<p>SYNC packet has only three fields: sequence number, sync value and sync ID, 
+making its total size only 11 bytes (1 extra byte comes from packet type) 
+In reality, SYNC id would probably be stored in source field and sync 
+value in NAV field. But in this model we do not create a separate packet 
+subclass for each packet type</p>
+</td>
+</tr>
+<tr class="local">
+   <td>syncId</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>4 bytes</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>macRadioInfoExchange</td>
+   <td>
+      <i>
+<a href="src-node-communication-mac-MacRadioInfoExchange_type.html">MacRadioInfoExchange_type</a></i>
+   </td>
+   <td>
+</td>
+</tr>
+<tr class="inherited">
+   <td>source</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="inherited">
+   <td>destination</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="inherited">
+   <td>sequenceNumber</td>
+   <td>
+      <i>
+unsigned int</i>
+   </td>
+   <td>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">TMacPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">MacPacket</span><span style="color: #000000; ">
+{
+    </span><span style="color: #808080; font-style: italic; ">// This a basic field, essential for any packet
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">// size including source and destination field (found 
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">// in the generic MacPAcket) is 9 bytes in total
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">type</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@enum</span><span style="color: #000000; ">(</span><span style="color: #000000; ">TmacPacket_type</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// 1 byte
+</span><span style="color: #000000; ">
+    </span><span style="color: #808080; font-style: italic; ">// RTS and CTS frames also contain nav field, bringing their size to 13 bytes
+</span><span style="color: #000000; ">    </span><span style="color: #000000; ">simtime_t</span><span style="color: #000000; "> </span><span style="color: #000000; ">nav</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;					</span><span style="color: #808080; font-style: italic; ">// 4 bytes
+</span><span style="color: #000000; ">
+	</span><span style="color: #808080; font-style: italic; ">// Sequence number is essential for ACK and DATA frames, but they do not 
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// contain NAV field, therefore the size of ACK packet and MAC 
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// layer overhead in general is 11 bytes. We use the field in the
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// generic MacPacket and count it as 2 bytes.
+</span><span style="color: #000000; ">
+    </span><span style="color: #808080; font-style: italic; ">// SYNC packet has only three fields: sequence number, sync value and sync ID, 
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">// making its total size only 11 bytes (1 extra byte comes from packet type) 
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">// In reality, SYNC id would probably be stored in source field and sync 
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">// value in NAV field. But in this model we do not create a separate packet 
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">// subclass for each packet type
+</span><span style="color: #000000; ">    </span><span style="color: #000000; ">simtime_t</span><span style="color: #000000; "> </span><span style="color: #000000; ">sync</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;					</span><span style="color: #808080; font-style: italic; ">// 4 bytes
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">syncId</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">// 4 bytes
+</span><span style="color: #000000; ">}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

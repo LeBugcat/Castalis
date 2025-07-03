@@ -1,0 +1,189 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Simple Module <i>TraceChannel</i></h2>
+<b>Package:</b> wirelessChannel.traceChannel<br/><b>File: <a href="src-wirelessChannel-traceChannel-TraceChannel.ned.html">src/wirelessChannel/traceChannel/TraceChannel.ned</a></b><br/><p>(no description)</p><h3 class="subtitle">Parameters:</h3>
+<table class="paramstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="defaultvalue">Default value</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td>false</td>
+   <td>   </td>
+</tr>
+<tr class="local">
+   <td>coordinator</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>0</td>
+   <td>
+<p>ID of coordinator node</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>traceStep</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>5</td>
+   <td>
+<p>time interval between trace entrys, in ms</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>traceFile</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p><a href="node.Node.html">Node</a> with coordinator ID is in the center, and 
+traceFile defines the maximum number of nodes that is 
+allowed. traceFile MUST be given in the czonfiguration, 
+or simulation fails</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>signalDeliveryThreshold</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>-100</td>
+   <td>
+<p>threshold in dBm above which, wireless channel module
+is delivering signal messages to radio modules of 
+individual nodes</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>pathlossMapFile</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>optional static map to define pathloss between all
+possible pairs of leaf nodes, if not specified, then
+leafLinkProbability and leafPathloss are used to 
+populate pathloss map</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>pathlossMapOffset</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>0</td>
+   <td>
+<p>optional offset value for pathlossMap. This offset will
+be added to all pathloss entries</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>temporalModelParametersFile</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>opional temporal model variation, only works if 
+pathlossMap file is defined</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>leafLinkProbability</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>0</td>
+   <td>
+<p>Probability to have reception between a pari of leaf nodes</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>leafPathloss</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>80.0</td>
+   <td>
+<p>Pathloss between leaf nodes</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Gates:</h3>
+<table class="gatestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Direction</th>
+      <th class="gatesize">Size</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>toNode [ ]</xsl:if></td>
+   <td><i>output</i></td>
+   <td></td>   <td></td>
+</tr>
+<tr class="local">
+   <td>fromMobilityModule</xsl:if></td>
+   <td><i>input</i></td>
+   <td></td>   <td></td>
+</tr>
+<tr class="local">
+   <td>fromNode [ ]</xsl:if></td>
+   <td><i>input</i></td>
+   <td></td>   <td></td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">TraceChannel</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">wirelessChannel</span><span style="color: #000000; ">.</span><span style="color: #000000; ">iWirelessChannel</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">collectTraceInfo</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">false</span><span style="color: #000000; ">);
+        </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">coordinator</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">0</span><span style="color: #000000; ">); 				</span><span style="color: #808080; font-style: italic; ">// ID of coordinator node
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">traceStep</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">5</span><span style="color: #000000; ">);					</span><span style="color: #808080; font-style: italic; ">// time interval between trace entrys, in ms
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">traceFile</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;&quot;</span><span style="color: #000000; ">);				</span><span style="color: #808080; font-style: italic; ">// Node with coordinator ID is in the center, and 
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// traceFile defines the maximum number of nodes that is 
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// allowed. traceFile MUST be given in the czonfiguration, 
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// or simulation fails
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">signalDeliveryThreshold</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(-</span><span style="color: #008000; ">100</span><span style="color: #000000; ">);
+												</span><span style="color: #808080; font-style: italic; ">// threshold in dBm above which, wireless channel module
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// is delivering signal messages to radio modules of 
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// individual nodes
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">pathlossMapFile</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;&quot;</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">// optional static map to define pathloss between all
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// possible pairs of leaf nodes, if not specified, then
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// leafLinkProbability and leafPathloss are used to 
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// populate pathloss map
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">pathlossMapOffset</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">// optional offset value for pathlossMap. This offset will
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// be added to all pathloss entries
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">temporalModelParametersFile</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;&quot;</span><span style="color: #000000; ">);
+												</span><span style="color: #808080; font-style: italic; ">// opional temporal model variation, only works if 
+</span><span style="color: #000000; ">												</span><span style="color: #808080; font-style: italic; ">// pathlossMap file is defined
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">leafLinkProbability</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">// Probability to have reception between a pari of leaf nodes
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">leafPathloss</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">80</span><span style="color: #000000; ">.</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);		</span><span style="color: #808080; font-style: italic; ">// Pathloss between leaf nodes
+</span><span style="color: #000000; ">    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toNode</span><span style="color: #000000; ">[];
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromMobilityModule</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@directIn</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromNode</span><span style="color: #000000; ">[];
+}
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

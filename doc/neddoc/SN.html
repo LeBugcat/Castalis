@@ -1,0 +1,741 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Network <i>SN</i></h2>
+<b>Package:</b> default<br/><b>File: <a href="src-SensorNetwork.ned.html">src/SensorNetwork.ned</a></b><br/><p>(no description)</p><h3 class="subtitle">Parameters:</h3>
+<table class="paramstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="defaultvalue">Default value</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>field_x</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>30</td>
+   <td>
+<p>the length of the deployment field</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>field_y</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>30</td>
+   <td>
+<p>the width of the deployment field</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>field_z</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>0</td>
+   <td>
+<p>the height of the deployment field (2-D field by default)</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>numNodes</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>the number of nodes</p>
+   </td>
+</tr>
+<tr class="local">
+   <td>deployment</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+   </td>
+</tr>
+<tr class="local">
+   <td>numPhysicalProcesses</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>1</td>
+   <td>   </td>
+</tr>
+<tr class="local">
+   <td>physicalProcessName</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"CustomizablePhysicalProcess"</td>
+   <td>   </td>
+</tr>
+<tr class="local">
+   <td>wirelessChannelName</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"WirelessChannel"</td>
+   <td>   </td>
+</tr>
+<tr class="local">
+   <td>debugInfoFileName</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"Castalia-Trace.txt"</td>
+   <td>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Properties:</h3>
+<table class="propertiestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="value">Value</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>isNetwork</td>
+   <td><i></i></td>
+   <td></td>
+</tr>
+</table>
+<h3 class="subtitle">Unassigned submodule parameters:</h3>
+<table class="deepparamstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="defaultvalue">Default value</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td><a href="wirelessChannel.iWirelessChannel.html">wirelessChannel</a>.collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td></td>
+   <td>
+   </td>
+</tr>
+<tr>
+   <td><a href="physicalProcess.iPhysicalProcess.html">physicalProcess</a>.collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="physicalProcess.iPhysicalProcess.html">physicalProcess</a>.description</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td></td>
+   <td>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.mobilityManager.iMobilityManager.html">MobilityManager</a>.collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td>false</td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.ramSize</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>0.0</td>
+   <td>
+<p>in kB</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.flashSize</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>0.0</td>
+   <td>
+<p>in kB</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.flashWriteCost</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>0.0</td>
+   <td>
+<p>per kB</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.flashReadCost</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>0.0</td>
+   <td>
+<p>per kB</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.imageSize</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>0.0</td>
+   <td>
+<p>the space that the OS (e.g. Contiki or TinyOS) occupies in the flash</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.cpuPowerSpeedLevelNames</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.cpuPowerPerLevel</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>spent energy per time unit</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.cpuSpeedPerLevel</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.cpuInitialPowerLevel</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>-1</td>
+   <td>
+<p>index for the cpuPowerLevels array</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.sigmaCPUClockDrift</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>0.00003</td>
+   <td>
+<p>the standard deviation of the Drift of the CPU</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.initialEnergy</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>18720</td>
+   <td>
+<p>energy of the node in Joules, default value corresponds to two AA batteries
+source http://www.allaboutbatteries.com/Energy-tables.html</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.baselineNodePower</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>6</td>
+   <td>
+<p>the baseline/minimum power consumption in mWatts</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.resourceManager.ResourceManager.html">ResourceManager</a>.periodicEnergyCalculationInterval</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>1000</td>
+   <td>
+<p>maximum interval for periodic energy calculation, in msec</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td>false</td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.numSensingDevices</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>1</td>
+   <td>
+<p>how many sensing devices the node has 
+(has to be &lt;= SensorNetwork.numPhysicalProcesses)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.pwrConsumptionPerDevice</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0.5"</td>
+   <td>
+<p>string array of comma-separated power consumptions in mW</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.sensorTypes</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"Temperature"</td>
+   <td>
+<p>string array of comma-separated Names for the sensing devices</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.corrPhyProcess</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0"</td>
+   <td>
+<p>holds the indexes of the corresponding phy processes for
+each sensor (usually it should be : "0 1 2 3")</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.maxSampleRates</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"10"</td>
+   <td>
+<p>number of samples per second for each sensor</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.devicesBias</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0.1"</td>
+   <td>
+<p>If the output signal is not zero when the measured property is zero</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.devicesDrift</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>If the output signal slowly changes independent of the 
+measured property</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.devicesNoise</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0.1"</td>
+   <td>
+<p>random deviation of the signal that varies in time</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.devicesHysterisis</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>the sensor not instantly follows the change of the property 
+being measured and therefore involves the history of the 
+measured property</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.devicesSensitivity</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0"</td>
+   <td>
+<p>holds the minimum value which can be sensed by each sensing device.</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.devicesResolution</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0.001"</td>
+   <td>
+<p>holds the sensing resolution for each device 
+(the returned value will always be a multiple of 
+number, given here)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.sensorManager.SensorManager.html">SensorManager</a>.devicesSaturation</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"1000"</td>
+   <td>
+<p>holds the saturation value for each sensing device</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td>false</td>
+   <td>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.RadioParametersFile</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>variable points to the file that cointains most radio parameters</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.mode</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>we can choose a mode to begin with. Modes are defined in the
+RadioParametersFile. Empty string means use the first mode defined</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.state</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"RX"</td>
+   <td>
+<p>we can choose a radio state to begin with. RX and TX are always there.
+according to the radio defined we can choose from a different set of sleep states</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.TxOutputPower</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>we can choose a Txpower to begin with. Possible tx power values 
+are defined in the RadioParametersFile. Empty string means use 
+the first tx power defined (which is also the highest)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.sleepLevel</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>we can choose a sleep level which will be used when a transition to SLEEP state
+is requested. Empty string means use first level defined (will usually be the fastest
+and most energy consuming sleep state)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.carrierFreq</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>2400.0</td>
+   <td>
+<p>the carrier frequency (in MHz) to begin with.</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.collisionModel</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>2</td>
+   <td>
+<p>0-&gt; No interference
+1-&gt; Simple interference
+2-&gt; Additive interefence
+3-&gt; Advanced interference (not implemented)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.CCAthreshold</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>-95.0</td>
+   <td>
+<p>the threshold of the RSSI register (in dBm) 
+were above it channel is NOT clear</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.symbolsForRSSI</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>8</td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.carrierSenseInterruptEnabled</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td>false</td>
+   <td>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.bufferSize</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>16</td>
+   <td>
+<p>in number of frames</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.maxPhyFrameSize</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>1024</td>
+   <td>
+<p>in bytes</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.radio.Radio.html">Radio</a>.phyFrameOverhead</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>6</td>
+   <td>
+<p>in bytes (802.15.4. = 6 bytes)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.mac.iMac.html">MAC</a>.collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.mac.iMac.html">MAC</a>.macMaxPacketSize</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>in bytes</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.mac.iMac.html">MAC</a>.macBufferSize</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>in number of messages</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.mac.iMac.html">MAC</a>.macPacketOverhead</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.routing.iRouting.html">Routing</a>.collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.routing.iRouting.html">Routing</a>.maxNetFrameSize</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>in bytes</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.routing.iRouting.html">Routing</a>.netDataFrameOverhead</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>in bytes</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.communication.CommunicationModule.html">Communication</a>.<a href="node.communication.routing.iRouting.html">Routing</a>.netBufferSize</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>in number of messages</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.application.iApplication.html">Application</a>.applicationID</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.application.iApplication.html">Application</a>.collectTraceInfo</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.application.iApplication.html">Application</a>.priority</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.application.iApplication.html">Application</a>.packetHeaderOverhead</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>in bytes</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="node.Node.html">node</a>.<a href="node.application.iApplication.html">Application</a>.constantDataPayload</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td></td>
+   <td>
+<p>in bytes</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">network</span><span style="color: #000000; "> </span><span style="color: #000000; ">SN</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">field_x</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">30</span><span style="color: #000000; ">);			</span><span style="color: #808080; font-style: italic; ">// the length of the deployment field
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">field_y</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">30</span><span style="color: #000000; ">);			</span><span style="color: #808080; font-style: italic; ">// the width of the deployment field
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">field_z</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);			</span><span style="color: #808080; font-style: italic; ">// the height of the deployment field (2-D field by default)
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">numNodes</span><span style="color: #000000; ">;						</span><span style="color: #808080; font-style: italic; ">// the number of nodes
+</span><span style="color: #000000; ">
+        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">deployment</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;&quot;</span><span style="color: #000000; ">);
+
+        </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">numPhysicalProcesses</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">1</span><span style="color: #000000; ">);
+        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">physicalProcessName</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;CustomizablePhysicalProcess&quot;</span><span style="color: #000000; ">);
+        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">wirelessChannelName</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;WirelessChannel&quot;</span><span style="color: #000000; ">);
+        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">debugInfoFileName</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;Castalia-Trace.txt&quot;</span><span style="color: #000000; ">);
+
+    </span><span style="color: #800000; font-weight: bold; ">submodules</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">wirelessChannel</span><span style="color: #000000; ">: &lt;</span><span style="color: #000000; ">wirelessChannelName</span><span style="color: #000000; ">&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">wirelessChannel</span><span style="color: #000000; ">.</span><span style="color: #000000; ">iWirelessChannel</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; ">toNode</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numNodes</span><span style="color: #000000; ">];
+                </span><span style="color: #000000; ">fromNode</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numNodes</span><span style="color: #000000; ">];
+        }
+
+
+        </span><span style="color: #000000; ">physicalProcess</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numPhysicalProcesses</span><span style="color: #000000; ">]: &lt;</span><span style="color: #000000; ">physicalProcessName</span><span style="color: #000000; ">&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">physicalProcess</span><span style="color: #000000; ">.</span><span style="color: #000000; ">iPhysicalProcess</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; ">toNode</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numNodes</span><span style="color: #000000; ">];
+                </span><span style="color: #000000; ">fromNode</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numNodes</span><span style="color: #000000; ">];
+        }
+
+        </span><span style="color: #000000; ">node</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numNodes</span><span style="color: #000000; ">]: </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">Node</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; ">toPhysicalProcess</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numPhysicalProcesses</span><span style="color: #000000; ">];
+                </span><span style="color: #000000; ">fromPhysicalProcess</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numPhysicalProcesses</span><span style="color: #000000; ">];
+        }
+
+    </span><span style="color: #800000; font-weight: bold; ">connections</span><span style="color: #000000; ">:
+        </span><span style="color: #800000; font-weight: bold; ">for</span><span style="color: #000000; "> </span><span style="color: #000000; ">i</span><span style="color: #000000; ">=</span><span style="color: #008000; ">0</span><span style="color: #000000; ">..</span><span style="color: #000000; ">numNodes</span><span style="color: #000000; "> - </span><span style="color: #008000; ">1</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; ">node</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">].</span><span style="color: #000000; ">toWirelessChannel</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">wirelessChannel</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromNode</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">];
+            </span><span style="color: #000000; ">node</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">].</span><span style="color: #000000; ">fromWirelessChannel</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">&lt;--</span><span style="color: #000000; "> </span><span style="color: #000000; ">wirelessChannel</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toNode</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">];
+        }
+
+        </span><span style="color: #800000; font-weight: bold; ">for</span><span style="color: #000000; "> </span><span style="color: #000000; ">i</span><span style="color: #000000; ">=</span><span style="color: #008000; ">0</span><span style="color: #000000; ">..</span><span style="color: #000000; ">numNodes</span><span style="color: #000000; "> - </span><span style="color: #008000; ">1</span><span style="color: #000000; ">, </span><span style="color: #800000; font-weight: bold; ">for</span><span style="color: #000000; "> </span><span style="color: #000000; ">j</span><span style="color: #000000; ">=</span><span style="color: #008000; ">0</span><span style="color: #000000; ">..</span><span style="color: #000000; ">numPhysicalProcesses</span><span style="color: #000000; "> - </span><span style="color: #008000; ">1</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; ">node</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">].</span><span style="color: #000000; ">toPhysicalProcess</span><span style="color: #000000; ">[</span><span style="color: #000000; ">j</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">physicalProcess</span><span style="color: #000000; ">[</span><span style="color: #000000; ">j</span><span style="color: #000000; ">].</span><span style="color: #000000; ">fromNode</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">];
+            </span><span style="color: #000000; ">node</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">].</span><span style="color: #000000; ">fromPhysicalProcess</span><span style="color: #000000; ">[</span><span style="color: #000000; ">j</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">&lt;--</span><span style="color: #000000; "> </span><span style="color: #000000; ">physicalProcess</span><span style="color: #000000; ">[</span><span style="color: #000000; ">j</span><span style="color: #000000; ">].</span><span style="color: #000000; ">toNode</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">];
+        }
+}
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

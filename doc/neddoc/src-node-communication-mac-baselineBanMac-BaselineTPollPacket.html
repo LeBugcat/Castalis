@@ -1,0 +1,268 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Packet <i>BaselineTPollPacket</i></h2>
+<b>File: <a href="src-node-communication-mac-baselineBanMac-BaselineMacPacket.msg.html">src/node/communication/mac/baselineBanMac/BaselineMacPacket.msg</a></b><br/><p>(no description)</p><h3 class="subtitle">Extends:</h3>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="src-node-communication-mac-baselineBanMac-BaselineMacPacket.html">BaselineMacPacket</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Fields:</h3>
+<table class="fieldstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>currentBeaconPeriod</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+</td>
+</tr>
+<tr class="local">
+   <td>currentAllocationSlot</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+</td>
+</tr>
+<tr class="local">
+   <td>currentSlotOffset</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>2 byte</p>
+</td>
+</tr>
+<tr class="local">
+   <td>beaconPeriodLength</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>the next two fields present only if NIC == UnconnectedBroadcast</p>
+</td>
+</tr>
+<tr class="local">
+   <td>allocationSlotLength</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte
+if connected,	total: 4 bytes + 7 bytes in header
+unconnected, 	total: 6 bytes + 7 bytes in header</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>HID</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>MAC Header fields</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>NID</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte, short MAC address</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>protocolVersion</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>MAC header control fields</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>securityLevel</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>2 bits</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>TKindex</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 bit</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>retry</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 bit</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>ackPolicy</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>2 bits	total: 1 byte</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>frameType</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>2 bits</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>frameSubtype</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>2 bits</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>moreData</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 bit</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>firstFrame</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 bit		total: 2 bytes</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>sequenceNum</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>1 byte</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>fragmentNumber</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td>
+<p>3 bits
+reserved 5 bits											total: 4 bytes
+			total header: 7 bytes</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>macRadioInfoExchange</td>
+   <td>
+      <i>
+<a href="src-node-communication-mac-MacRadioInfoExchange_type.html">MacRadioInfoExchange_type</a></i>
+   </td>
+   <td>
+</td>
+</tr>
+<tr class="inherited">
+   <td>source</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="inherited">
+   <td>destination</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="inherited">
+   <td>sequenceNumber</td>
+   <td>
+      <i>
+unsigned int</i>
+   </td>
+   <td>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineTPollPacket</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">BaselineMacPacket</span><span style="color: #000000; ">
+{
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">currentBeaconPeriod</span><span style="color: #000000; ">;				</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">currentAllocationSlot</span><span style="color: #000000; ">;				</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">currentSlotOffset</span><span style="color: #000000; ">;					</span><span style="color: #808080; font-style: italic; ">//2 byte
+</span><span style="color: #000000; ">    </span><span style="color: #808080; font-style: italic; ">//the next two fields present only if NIC == UnconnectedBroadcast
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">beaconPeriodLength</span><span style="color: #000000; ">;					</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">allocationSlotLength</span><span style="color: #000000; ">;				</span><span style="color: #808080; font-style: italic; ">//1 byte
+</span><span style="color: #000000; ">											</span><span style="color: #808080; font-style: italic; ">//if connected,	total: 4 bytes + 7 bytes in header
+</span><span style="color: #000000; ">											</span><span style="color: #808080; font-style: italic; ">//unconnected, 	total: 6 bytes + 7 bytes in header
+</span><span style="color: #000000; ">}
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

@@ -1,0 +1,103 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">NED File <i>src/node/Node.ned</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="node.Node.html">Node</a>
+   </td>
+   <td>
+<i>compound&nbsp;module</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//********************************************************************************
+//*  Copyright: National ICT Australia,  2007 - 2010                             *
+//*  Developed at the ATP lab, Networked Systems research theme                  *
+//*  Author(s): Athanassios Boulis, Dimosthenis Pediaditakis, Yuriy Tselishchev  *
+//*  This file is distributed under the terms in the attached LICENSE file.      *
+//*  If you do not find this file, copies can be found by writing to:            *
+//*                                                                              *
+//*      NICTA, Locked Bag 9013, Alexandria, NSW 1435, Australia                 *
+//*      Attention:  License Inquiry.                                            *
+//*                                                                              *
+//*******************************************************************************/
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">package</span><span style="color: #000000; "> </span><span style="color: #000000; ">node</span><span style="color: #000000; ">;
+
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mobilityManager</span><span style="color: #000000; ">;
+
+</span><span style="color: #808080; font-style: italic; ">// The sensor node module. Connects to the wireless channel in order to communicate 
+// with other nodes. Connects to psysical processes so it can sample them.
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">module</span><span style="color: #000000; "> </span><span style="color: #000000; ">Node</span><span style="color: #000000; "> {
+ </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+ 	</span><span style="color: #808080; font-style: italic; ">//node location is defined by five parameters below
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">xCoor</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">yCoor</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">zCoor</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">phi</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);
+	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">theta</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);
+	
+	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">startupOffset</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);							</span><span style="color: #808080; font-style: italic; ">//node startup offset (i.e. delay), in seconds 
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">startupRandomization</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">0</span><span style="color: #000000; ">.</span><span style="color: #008000; ">05</span><span style="color: #000000; ">);				</span><span style="color: #808080; font-style: italic; ">//node startup randomisation, in seconds
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// Node will become active startupOffset + random(startupRandomization) 
+</span><span style="color: #000000; ">	</span><span style="color: #808080; font-style: italic; ">// seconds after the start of simulation
+</span><span style="color: #000000; ">
+	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">ApplicationName</span><span style="color: #000000; ">;										</span><span style="color: #808080; font-style: italic; ">//the name of the implemented Application Module
+</span><span style="color: #000000; ">	</span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">MobilityManagerName</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; "> (</span><span style="color: #008000; ">&quot;NoMobilityManager&quot;</span><span style="color: #000000; ">);	</span><span style="color: #808080; font-style: italic; ">//the name of the implemented Mobility Module
+</span><span style="color: #000000; ">
+ </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toWirelessChannel</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">toPhysicalProcess</span><span style="color: #000000; ">[];
+	</span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromWirelessChannel</span><span style="color: #000000; ">;
+	</span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">fromPhysicalProcess</span><span style="color: #000000; ">[];
+
+ </span><span style="color: #800000; font-weight: bold; ">submodules</span><span style="color: #000000; ">:
+ 	</span><span style="color: #000000; ">MobilityManager</span><span style="color: #000000; ">: &lt;</span><span style="color: #000000; ">MobilityManagerName</span><span style="color: #000000; ">&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mobilityManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">iMobilityManager</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">ResourceManager</span><span style="color: #000000; ">: </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">resourceManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">ResourceManager</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">SensorManager</span><span style="color: #000000; ">: </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">sensorManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">SensorManager</span><span style="color: #000000; "> {
+	 </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+		</span><span style="color: #000000; ">fromNodeContainerModule</span><span style="color: #000000; ">[</span><span style="color: #800000; font-weight: bold; ">sizeof</span><span style="color: #000000; ">(</span><span style="color: #000000; ">toPhysicalProcess</span><span style="color: #000000; ">)];
+		</span><span style="color: #000000; ">toNodeContainerModule</span><span style="color: #000000; ">[</span><span style="color: #800000; font-weight: bold; ">sizeof</span><span style="color: #000000; ">(</span><span style="color: #000000; ">toPhysicalProcess</span><span style="color: #000000; ">)];
+	} 
+	</span><span style="color: #000000; ">Communication</span><span style="color: #000000; ">: </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">CommunicationModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">Application</span><span style="color: #000000; ">: &lt;</span><span style="color: #000000; ">ApplicationName</span><span style="color: #000000; ">&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">node</span><span style="color: #000000; ">.</span><span style="color: #000000; ">application</span><span style="color: #000000; ">.</span><span style="color: #000000; ">iApplication</span><span style="color: #000000; ">;
+
+ </span><span style="color: #800000; font-weight: bold; ">connections</span><span style="color: #000000; ">:
+	</span><span style="color: #000000; ">Communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toNodeContainerModule</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">toWirelessChannel</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">fromWirelessChannel</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromNodeContainerModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">Application</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toCommunicationModule</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromApplicationModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">Application</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toSensorDeviceManager</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">SensorManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromApplicationModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">Communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toApplicationModule</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Application</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromCommunicationModule</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">SensorManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toApplicationModule</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Application</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromSensorDeviceManager</span><span style="color: #000000; ">;
+
+	</span><span style="color: #800000; font-weight: bold; ">for</span><span style="color: #000000; "> </span><span style="color: #000000; ">i</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">..</span><span style="color: #800000; font-weight: bold; ">sizeof</span><span style="color: #000000; ">(</span><span style="color: #000000; ">toPhysicalProcess</span><span style="color: #000000; ">) - </span><span style="color: #008000; ">1</span><span style="color: #000000; "> {
+		</span><span style="color: #000000; ">fromPhysicalProcess</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">SensorManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromNodeContainerModule</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">];
+		</span><span style="color: #000000; ">SensorManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toNodeContainerModule</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">toPhysicalProcess</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">];
+	}
+
+	</span><span style="color: #000000; ">ResourceManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toSensorDevManager</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">SensorManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromResourceManager</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">ResourceManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toApplication</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Application</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromResourceManager</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">ResourceManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toNetwork</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromResourceManager2Net</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">ResourceManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toMac</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromResourceManager2Mac</span><span style="color: #000000; ">;
+	</span><span style="color: #000000; ">ResourceManager</span><span style="color: #000000; ">.</span><span style="color: #000000; ">toRadio</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">Communication</span><span style="color: #000000; ">.</span><span style="color: #000000; ">fromResourceManager2Radio</span><span style="color: #000000; ">;
+}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>
