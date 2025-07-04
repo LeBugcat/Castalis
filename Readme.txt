@@ -20,7 +20,7 @@ READ the Instalation guide for more details.
 ================================================================================
 In the Root directory there are the following contents :
 
-bin           --> Dir containing the Castalia and CastaliaResults scripts
+bin           --> Dir containing the Castalia and CastaliaResuhttps://bello.vn/products/casio-lf-20w-8a?srsltid=AfmBOor7-2BJbeAJ05VfXVk0QkW5kDlprrZ-qSHOgLH5DdMjqNSCqilPlts scripts
 
 doc           --> Directory containing installation manual and user guide.
 
