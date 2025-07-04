@@ -11,7 +11,7 @@
 # ***************************************************************************/
 
 
-TO INSTALL Castalia type:
+TO INSTALL Castalis type:
 > make makefiles
 > make
 

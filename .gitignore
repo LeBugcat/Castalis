@@ -1,14 +1,18 @@
 # Prerequisites
 *.d
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
+# Eclipse / OMNeT++ IDE
+.project 
+.cproject 
+# Compiled Object files 
+*.slo 
+*.lo 
+*.o 
+*.obj 
+.settings/ 
+.metadata/
+# Precompiled Headers 
+*.gch 
 *.pch
 
 # Linker files
