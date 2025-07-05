@@ -31,6 +31,10 @@
 #include <stdio.h>
 #include <iostream>
 
+#include "mainTSP.h"
+#include "lib/VRPTW/Vrptw.h"
+#include "lib/TSPGA/mainTspga.h"
+
 #include "./GAMBACPacket_m.h"
 #include "node/communication/routing/VirtualRouting.h"
 #include "node/communication/routing/convergecast/ConvergecastRouting.h"
@@ -43,9 +47,7 @@
 #include "helpStructures/GeoMathHelper.h"
 #include "helpStructures/GlobalLocationService.h"
 #include "helpStructures/UDG.h"
-#include "VRPTW/Vrptw.h"
-#include "mainTSP.h"
-#include "TSPGA/mainTspga.h"
+
 
 using namespace std;
 

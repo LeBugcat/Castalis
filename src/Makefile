@@ -32,17 +32,17 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 # Object files for local .cc, .msg and .sm files
 OBJS = \
     $O/mainTSP.o \
-    $O/TSPGA/customer_tsp.o \
-    $O/TSPGA/evolution_tsp.o \
-    $O/TSPGA/mainTspga.o \
-    $O/TSPGA/problem_tsp.o \
-    $O/TSPGA/route_tsp.o \
-    $O/TSPGA/solution_tsp.o \
-    $O/VRPTW/customer.o \
-    $O/VRPTW/evolution.o \
-    $O/VRPTW/problem.o \
-    $O/VRPTW/route.o \
-    $O/VRPTW/solution.o \
+    $O/lib/TSPGA/customer_tsp.o \
+    $O/lib/TSPGA/evolution_tsp.o \
+    $O/lib/TSPGA/mainTspga.o \
+    $O/lib/TSPGA/problem_tsp.o \
+    $O/lib/TSPGA/route_tsp.o \
+    $O/lib/TSPGA/solution_tsp.o \
+    $O/lib/VRPTW/customer.o \
+    $O/lib/VRPTW/evolution.o \
+    $O/lib/VRPTW/problem.o \
+    $O/lib/VRPTW/route.o \
+    $O/lib/VRPTW/solution.o \
     $O/geometry/Circle.o \
     $O/geometry/Line.o \
     $O/geometry/Parabola.o \
@@ -72,9 +72,7 @@ OBJS = \
     $O/helpStructures/TSP/tsp.o \
     $O/helpStructures/TSP/twoOpt.o \
     $O/node/application/VirtualApplication.o \
-    $O/node/application/basicUAV/BasicUAV.o \
     $O/node/application/bridgeTest/BridgeTest.o \
-    $O/node/application/clusterUAVAggregation/ClusterUAVAggregation.o \
     $O/node/application/connectivityMap/ConnectivityMap.o \
     $O/node/application/metricCollector/MetricCollector.o \
     $O/node/application/simpleAggregation/SimpleAggregation.o \
@@ -88,9 +86,6 @@ OBJS = \
     $O/node/communication/mac/mac802154/Basic802154.o \
     $O/node/communication/mac/mac802154/TSCH802154/TSCH802154.o \
     $O/node/communication/mac/mac802154/staticGTS802154/StaticGTS802154.o \
-    $O/node/communication/mac/mac802154TSCHlite/MAC802154TSCHLite.o \
-    $O/node/communication/mac/mac802154TSCHlite/distributed/DeAMON/DeAMON.o \
-    $O/node/communication/mac/mac802154TSCHlite/distributed/MCMTMac/MCMTMac.o \
     $O/node/communication/mac/tMac/TMAC.o \
     $O/node/communication/mac/tunableMac/TunableMAC.o \
     $O/node/communication/radio/Radio.o \
@@ -121,9 +116,6 @@ OBJS = \
     $O/node/communication/mac/baselineBanMac/BaselineMacPacket_m.o \
     $O/node/communication/mac/mac802154/Basic802154Packet_m.o \
     $O/node/communication/mac/mac802154/TSCH802154/TSCH802154Packet_m.o \
-    $O/node/communication/mac/mac802154TSCHlite/MAC802154LitePacket_m.o \
-    $O/node/communication/mac/mac802154TSCHlite/distributed/DeAMON/DeAMONPacket_m.o \
-    $O/node/communication/mac/mac802154TSCHlite/distributed/MCMTMac/MCMTMacPacket_m.o \
     $O/node/communication/mac/tMac/TMacPacket_m.o \
     $O/node/communication/mac/tunableMac/TunableMacControl_m.o \
     $O/node/communication/mac/tunableMac/TunableMacPacket_m.o \
@@ -148,9 +140,6 @@ MSGFILES = \
     node/communication/mac/baselineBanMac/BaselineMacPacket.msg \
     node/communication/mac/mac802154/Basic802154Packet.msg \
     node/communication/mac/mac802154/TSCH802154/TSCH802154Packet.msg \
-    node/communication/mac/mac802154TSCHlite/MAC802154LitePacket.msg \
-    node/communication/mac/mac802154TSCHlite/distributed/DeAMON/DeAMONPacket.msg \
-    node/communication/mac/mac802154TSCHlite/distributed/MCMTMac/MCMTMacPacket.msg \
     node/communication/mac/tMac/TMacPacket.msg \
     node/communication/mac/tunableMac/TunableMacControl.msg \
     node/communication/mac/tunableMac/TunableMacPacket.msg \
